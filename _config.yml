@@ -71,10 +71,10 @@ defaults:
       share: true
 
 # Site Author
-author:
-  name:
-  picture:
-  email:
+author: WD
+  name: Liam Kim
+  picture: 
+  email: dldl8675@gmail.com
   twitter:
   links:
     - title:
