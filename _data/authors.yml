@@ -1,18 +1,1 @@
-# Sample Authors
-# Remove file or replace with your own
 
-
-author:
-  links:
-    - title: GitHub
-      url: https://github.com/dev-wd
-      icon: fab fa-github-square
-    - title: Instagram
-      url: https://www.instagram.com/wd______/
-      icon: fab fa-instagram
-
-
-Cornelius Fiddlebone:
-  name: Cornelius Fiddlebone
-  picture: /images/bio-photo.jpg
-  twitter: corneliusfiddlebone
