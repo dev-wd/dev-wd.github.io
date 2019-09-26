@@ -88,7 +88,7 @@ footer_links:
     icon: fab fa-github-square
   - title: Instagram
     url: https://www.instagram.com/wd______/
-    icon: fab fab fa-instagram
+    icon: fab fa-instagram
   - title: Feed
     url: atom.xml
     icon: fas fa-rss-square
