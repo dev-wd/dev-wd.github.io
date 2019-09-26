@@ -10,3 +10,11 @@
   url: /swift/
 - title: Algorithm
   url: /algorithm/
+- title: Posts
+  url: /posts/
+- title: Categories
+  url: /categories/
+- title: External Page
+  url: https://whatever-site.com/page.html
+- title: Search
+  url: /search/
