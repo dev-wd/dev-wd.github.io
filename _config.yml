@@ -3,7 +3,7 @@ theme: jekyll-theme-so-simple
 locale: en-US
 title: "WD Dev"
 description: "Enjoy Application Developement!"
-baseurl: ""# the subpath of your site, e.g. "/blog"
+baseurl: "" # the subpath of your site, e.g. "/blog"
 url: "https://dev-wd.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 logo: "/images/logo.png" # path of site logo, e.g. "/images/logo.png"
 date_format: "%B %-d, %Y"
