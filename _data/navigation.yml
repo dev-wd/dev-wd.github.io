@@ -1,5 +1,7 @@
 # Sample site navigation bar links
 
+- title: Home
+  url: /
 - title: Intro
   url: /intro
 - title: Flutter
