@@ -54,7 +54,7 @@ search_full_content: false # can have performance implications for large sites
 #   - vendor/gems/
 #   - vendor/ruby/
 
-skin: "/assets/css/skins/dark.css"
+skin: "/assets/css/skins/dark.scss"
 
 plugins:
   - jekyll-seo-tag
