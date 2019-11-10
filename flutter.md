@@ -2,5 +2,6 @@
 title: Flutter
 layout: categories
 permalink: /flutter/
-sitemap: false
+show_excerpts: true
+entries_layout: list
 ---
