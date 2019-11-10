@@ -1,6 +1,6 @@
 ---
 title: Flutter
-layout: categories
+layout: posts
 permalink: /flutter/
 show_excerpts: true
 entries_layout: list
