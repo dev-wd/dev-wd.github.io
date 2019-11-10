@@ -1,6 +1,6 @@
 ---
 title: Flutter
-layout: defualt
+layout: flutter
 permalink: /flutter/
 sitemap: false
 ---
