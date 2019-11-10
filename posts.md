@@ -1,7 +1,6 @@
 ---
-title: Post Archive
-layout: posts
-permalink: /posts/
-show_excerpts: true
-entries_layout: list
+title: Flutter
+layout: defualt
+permalink: /flutter/
+sitemap: false
 ---
