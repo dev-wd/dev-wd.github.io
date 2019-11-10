@@ -1,6 +1,6 @@
 ---
 title: Flutter
-layout: flutter
+layout: categories
 permalink: /flutter/
 sitemap: false
 ---
