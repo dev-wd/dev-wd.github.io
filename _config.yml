@@ -70,6 +70,12 @@ collections:
   flutter:
     output: true
     permalink: /:collection/:path/
+  algorithm:
+    output: true
+    permalink: /:collection/:path/
+  conference:
+    output: true
+    permalink: /:collection/:path/
 
 # Front Matter Defaults
 defaults:
