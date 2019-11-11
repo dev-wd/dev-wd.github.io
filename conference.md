@@ -1,7 +1,7 @@
 ---
-title: Conference(korean)
-layout: posts
-permalink: /conference/
-show_excerpts: true
+title: Algorithm
+layout: collection
+collection: algorithm
+permalink: /algorithm/
 entries_layout: list
 ---
