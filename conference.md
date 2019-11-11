@@ -1,7 +1,7 @@
 ---
-title: Algorithm
+title: Conference
 layout: collection
-collection: algorithm
-permalink: /algorithm/
+collection: conference
+permalink: /conference/
 entries_layout: list
 ---
