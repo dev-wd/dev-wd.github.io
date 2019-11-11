@@ -1,7 +1,7 @@
 ---
-title: Algorithm (Korean)
-layout: posts
+title: Algorithm
+layout: collection
+collection: algorithm
 permalink: /algorithm/
-show_excerpts: true
 entries_layout: list
 ---
