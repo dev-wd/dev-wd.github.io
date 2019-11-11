@@ -64,7 +64,10 @@ plugins:
 
 # Collections
 collections:
-  recipes:
+  swift:
+    output: true
+    permalink: /:collection/:path/
+  flutter:
     output: true
     permalink: /:collection/:path/
 
