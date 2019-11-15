@@ -1,0 +1,17 @@
+---
+title: "Let's Swift 2019 참여 후기"
+date: 2019-11-15 08:26:28 -0400
+layout: collection
+collection: conference
+categories:
+  - conference
+  
+---
+
+
+
+​```python
+def print_hi(name):
+  print("hello", name)
+print_hi('Tom')
+​```
