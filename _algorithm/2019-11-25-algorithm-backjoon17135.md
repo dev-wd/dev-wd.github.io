@@ -1,0 +1,178 @@
+---
+title: "[Python] BOJ 7569 캐슬 디펜스"
+layout: collection
+collection: algorithm
+date: 2019-11-25 22:15:38 -0400
+categories:
+  - alorithm
+  
+---
+
+
+
+- https://www.acmicpc.net/problem/17135
+
+### 문제 이해 및 적용하기
+- 어릴 때 해보던 간단한 미니게임과 같은 문제이다.  테트리스 처럼 적이 밑으로 매 턴마다 한칸씩 내려오고 이를 밑에 있는 3명의 궁수가 한 턴당 총알을 한번씩 쏘아서 죽이는 게임이다.
+이 문제는 BFS로 풀 수 있는데, 이것에 추가로 다른 예외조건이나 계산량이 많아서 시뮬레이션 문제로 분류될 수 있겠다.
+
+- Matrix 를 만들 때에는 특별한 건 없었다.
+- 다만 achure List를 만들어서 순열로 각 궁수들이 하단에 배치되는  경우의 수를 append해주었다.
+
+```python
+import sys
+import copy
+from itertools import combinations
+
+# matrix structure + input
+input = sys.stdin.readline
+N,M,D = map(int,input().split())
+matrix = []
+for i in range(N):
+  matrix.append(list(map(int,input().split())))
+
+caseIndexMatrix = list(combinations([i for i in range(M)],3))
+for i in range(len(caseIndexMatrix)):
+  caseIndexMatrix[i] = list(caseIndexMatrix[i])
+
+  
+```
+
+- BFS 는 각각의 궁수마다 진행해주었다. 
+- 본인은 top, right, bottom, left case를 모두 다 적어주었는데, dx dy를 지정하여 for문으로 돌려주는 것이 코드량을 줄이는 방법이다.
+
+```python
+# bfs
+def bfs(cur_index):
+  queue = [[N-1,cur_index,0]]
+  while(queue):
+  
+    cur_yx = queue.pop(0)
+    if temMatrix[cur_yx[0]][cur_yx[1]] == 1:
+      return cur_yx
+    
+    # left
+    if cur_yx[1] > 0 and cur_yx[2] < D-1:
+      queue.append([cur_yx[0],cur_yx[1]-1,cur_yx[2]+1])
+    # top
+    if cur_yx[0] > 0 and cur_yx[2] < D-1:
+      queue.append([cur_yx[0]-1,cur_yx[1],cur_yx[2]+1])
+    # right
+    if cur_yx[1] < M -1 and cur_yx[2] < D-1:
+      queue.append([cur_yx[0],cur_yx[1]+1,cur_yx[2]+1])
+    
+  return 0
+  
+```
+
+### 주의할 점
+
+- 각각의 턴마다 궁수는 적 하나를 공격할 수 있는데, 한 턴에 한하여 중복 공격이 가능하다. 그러므로 한 궁수에게 적이 맞았다고 해서 바로 삭제시키면 안되고, 한 턴 이 끝나고 삭제해주어야 한다. 
+- 또한, 본인처럼 각각의 궁수마다 BFS를 진행해주고 적을 맞춘 횟수를 Count하게 된다면 각각의 궁수가 중복해서 맞춘 갯수를 빼주어야 한다. (이 때문에 처음에 틀렸었다.. )
+- Python은 call by reference이기 때문에 call by value로 바꾸어 주어야 한다. (Deep copy)
+
+
+```python
+
+listans= []
+# for all achure cases 
+for i in range(len(caseIndexMatrix)):
+
+  ans = 0
+  temMatrix = copy.deepcopy(matrix)
+  for j in range(N):
+    check_dup = []
+    tem1 = bfs(caseIndexMatrix[i][0])
+    tem2 = bfs(caseIndexMatrix[i][1])
+    tem3 = bfs(caseIndexMatrix[i][2])
+
+    # remove duplicated case 
+    if not tem1 == 0 :
+      temMatrix[tem1[0]][tem1[1]] = 0
+      check_dup.append(tem1[0:2])
+    if not tem2 == 0 :
+      temMatrix[tem2[0]][tem2[1]] = 0
+      check_dup.append(tem2[0:2])
+    if not tem3 == 0 :
+      temMatrix[tem3[0]][tem3[1]] = 0
+      check_dup.append(tem3[0:2])
+    # How many achors dead 
+    ans += len(set([tuple(set(check_dup)) for check_dup in check_dup]))
+    temMatrix.pop()
+    temMatrix.insert(0,[0 for k in range(M)])
+  listans.append(ans)
+print(max(listans)) 
+# MAX die  = Answer
+  
+```
+
+
+
+### 전체 코드
+```python
+import sys
+import copy
+from itertools import combinations
+
+# matrix structure + input
+input = sys.stdin.readline
+N,M,D = map(int,input().split())
+matrix = []
+for i in range(N):
+  matrix.append(list(map(int,input().split())))
+
+caseIndexMatrix = list(combinations([i for i in range(M)],3))
+for i in range(len(caseIndexMatrix)):
+  caseIndexMatrix[i] = list(caseIndexMatrix[i])
+# bfs
+def bfs(cur_index):
+  queue = [[N-1,cur_index,0]]
+  while(queue):
+  
+    cur_yx = queue.pop(0)
+    if temMatrix[cur_yx[0]][cur_yx[1]] == 1:
+      return cur_yx
+    
+    # left
+    if cur_yx[1] > 0 and cur_yx[2] < D-1:
+      queue.append([cur_yx[0],cur_yx[1]-1,cur_yx[2]+1])
+    # top
+    if cur_yx[0] > 0 and cur_yx[2] < D-1:
+      queue.append([cur_yx[0]-1,cur_yx[1],cur_yx[2]+1])
+    # right
+    if cur_yx[1] < M -1 and cur_yx[2] < D-1:
+      queue.append([cur_yx[0],cur_yx[1]+1,cur_yx[2]+1])
+    
+  return 0
+
+listans= []
+# for all achure cases 
+for i in range(len(caseIndexMatrix)):
+
+  ans = 0
+  temMatrix = copy.deepcopy(matrix)
+  for j in range(N):
+    check_dup = []
+    tem1 = bfs(caseIndexMatrix[i][0])
+    tem2 = bfs(caseIndexMatrix[i][1])
+    tem3 = bfs(caseIndexMatrix[i][2])
+
+    # remove duplicated case 
+    if not tem1 == 0 :
+      temMatrix[tem1[0]][tem1[1]] = 0
+      check_dup.append(tem1[0:2])
+    if not tem2 == 0 :
+      temMatrix[tem2[0]][tem2[1]] = 0
+      check_dup.append(tem2[0:2])
+    if not tem3 == 0 :
+      temMatrix[tem3[0]][tem3[1]] = 0
+      check_dup.append(tem3[0:2])
+    # How many achors dead 
+    ans += len(set([tuple(set(check_dup)) for check_dup in check_dup]))
+    temMatrix.pop()
+    temMatrix.insert(0,[0 for k in range(M)])
+  listans.append(ans)
+print(max(listans)) 
+# MAX die  = Answer
+  
+```
