@@ -1,5 +1,5 @@
 ---
-title: "[Python] BOJ 7569 캐슬 디펜스"
+title: "[Python] BOJ 17135 캐슬 디펜스"
 layout: collection
 collection: algorithm
 date: 2019-11-25 22:15:38 -0400
