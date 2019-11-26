@@ -1,5 +1,5 @@
 ---
-title: "Applying rxSwift to tableview in various situations"
+title: "Applying UITableview with RxSwift in various situations"
 date: 2019-11-24 20:32:03 -0400
 layout: collection
 collection: swift
@@ -8,7 +8,7 @@ categories:
   
 ---
 
-Applying RxSwfit on tableview in various situations is an issue for junier developer like me.
+Applying UITableview with RxSwift in various situations is an issue for junier developer like me.
 
 Of course, their are several other ways to implement these tableview. It's not the answer, but one of way.
 
