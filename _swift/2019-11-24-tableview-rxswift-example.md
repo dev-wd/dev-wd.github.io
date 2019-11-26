@@ -1,6 +1,6 @@
 ---
 title: "Applying rxSwift to tableview in various situations"
-date: 2019-11-18 08:26:28 -0400
+date: 2019-11-24 20:32:03 -0400
 layout: collection
 collection: swift
 categories:
