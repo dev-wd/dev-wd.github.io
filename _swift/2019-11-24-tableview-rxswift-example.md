@@ -30,7 +30,7 @@ I hope you save time with these both example code and explanation.
 
 <center><img src="../images/rxswift_tableview/example1.png" width="300" height="600"></center>
 
-
+![title](../images/rxswift_tableview/example1.png){: width="300" height="600"){: .center}
 Showing fruit name and image on tableview.
 
 ### Declared variable
