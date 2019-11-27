@@ -28,7 +28,8 @@ I hope you save time with these both example code and explanation.
 
 ## Case 1. TableView + data
 
-이미지 1
+<center><img src="./images/rxswift_tableview/example1.png" width="300" height="600"></center>
+
 
 Showing fruit name and image on tableview.
 
@@ -90,11 +91,11 @@ func InputTableView() {
 
 ## Case 2. TableView + textfield in cell
 
-이미지 2_1
+<center><img src="./images/rxswift_tableview/example2_1.png" width="300" height="600"></center>
 
 Showing number Label and textfield on tableview. If you put the fruit name on textfield, and then you will see the images of each fruits.
 
-이미지 2_2
+<center><img src="./images/rxswift_tableview/example2_2.png" width="300" height="600"></center>
 
 Here are the images of fruit which you typed on previous page.
 
@@ -189,7 +190,7 @@ Also, you should 'prepareForReuse' on your cell like below.
 ## Case 3. Tableview + button event in cell
 
 
-image3
+<center><img src="./images/rxswift_tableview/example3.png" width="300" height="600"></center>
 
 Showing fruit name, image, and remove button on tableview.
 
