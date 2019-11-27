@@ -28,7 +28,7 @@ I hope you save time with these both example code and explanation.
 
 ## Case 1. TableView + data
 
-<center><img src="./images/rxswift_tableview/example1.png" width="300" height="600"></center>
+<center><img src="../images/rxswift_tableview/example1.png" width="300" height="600"></center>
 
 
 Showing fruit name and image on tableview.
