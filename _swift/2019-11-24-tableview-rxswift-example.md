@@ -8,12 +8,12 @@ categories:
   
 ---
 
-Applying UITableview with RxSwift in various situations is an issue for junier developer like me.
+Applying UITableview with RxSwift in various situations is an difficult issue for junier developer including me.
 
-Of course, their are several other ways to implement these tableview. It's not the answer, but one of many things.
+Of course, there are other ways to implement these tableview. Nevertheless, it is the one of answers 
 
 
-I hope you save time with these both example code and explanation.
+I hope my example codes and explanation help you to save your time.
 
 - Overall Code : https://github.com/dev-wd/tableview_with_rxswift_example
 
@@ -37,7 +37,7 @@ I used 'BehaviorRelay' in RxCocoa for fruit variable.
 
 'BehaviorRelay' is a subject that requires an initial value and emits its current value to new subscribers
 
-It support initaial value, and can be easily bind to tableview. Initial value will support tableview data.
+It supports an initial value, and can be easily bind to tableview. Initial value will support tableview data.
 
 Since TableView IBOutlet supports custom tableview size, I usually don't use 'UITableViewController'. 
  
@@ -172,7 +172,7 @@ Dispose cell diseposebag for each cell
 
 As you know, Tableview reuses cell for memory saving. That's why you must erase cell data. 
 
-It's not ciritial on this, but critial issue for example3 like the case erasing cell.
+It's not critial on this, but critial issue for example3 like the case erasing cell.
 
 Also, you should 'prepareForReuse' on your cell like below.
 
@@ -277,6 +277,6 @@ I feel hard to deal with various situation.
 
 These reasons makes RxSwift + Tableview dificult. 
 
-Of course there can be exist a better way, but as a junier developer, I wanted to tell you what you could make mistakes about this subject. 
+Of course there can be exist a better way, but as a junior developer, I want to show tell you what makes you mistakes easily about this subject.
 
-I hope this helps to you:)
+I hope this helps you:)
