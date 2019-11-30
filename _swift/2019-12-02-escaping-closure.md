@@ -38,7 +38,7 @@ There are getFruitColor example below.
 
 If you send parameter on getFruitColor function with completionHanlder, then completionHanlder prints the color of given fruit.
 
-- FULL Code : https://github.com/dev-wd/simple_swift_example/blob/master/exscape_closure/ViewController.swift
+- FULL Code : https://github.com/dev-wd/simple_swift_example/blob/master/escape_closure/ViewController.swift
 
 
 ## Case 1. Completion Handle with TrailingClosure
