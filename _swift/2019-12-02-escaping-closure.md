@@ -9,10 +9,6 @@ categories:
 ---
 
 
-
-# Swift Async Programming @escaping closure, and  Completion handler
-
-
 When I am using HTTP connection for login system , I should catch the end point of getting data. 
 
 As you know, HTTP connection is done asychronously, I cannot use return value for this case.
