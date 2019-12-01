@@ -5,7 +5,17 @@ layout: collection
 collection: swift
 categories:
   - swift
-  
+author:
+  name: Liam SY Kim
+  picture: /images/profile.jpeg
+  email: dldl8675@gmail.com
+  links:
+    - title: GitHub
+      url: https://github.com/dev-wd
+      icon: fab fa-github-square
+    - title: Instagram
+      url: https://www.instagram.com/wd______/
+      icon: fab fa-instagram
 ---
 
 Applying UITableview with RxSwift in various situations is an difficult issue for junier developer including me.
