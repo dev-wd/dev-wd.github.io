@@ -1,5 +1,6 @@
 ---
 layout: home
+title: Liam SY Kim
 limit: 5
 show_excerpts: true
 entries_layout: list
@@ -7,7 +8,6 @@ entries_layout: list
 
 
 
-# Liam SY Kim
 
 
 <img src="images/profile.jpeg" width="300" height="300">
