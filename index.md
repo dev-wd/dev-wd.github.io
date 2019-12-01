@@ -28,3 +28,10 @@ https://www.linkedin.com/in/liam-sooyong-kim-9aaa95195/
 
 ### Instagram
  https://www.instagram.com/wd______/
+
+
+## About Me
+
+## SKILLs
+
+## ACTIVITIES
