@@ -10,7 +10,7 @@ entries_layout: list
 # Liam SY Kim
 
 
-<img src="images/profile.jpeg" width="300" height="600">
+<img src="images/profile.jpeg" width="300" height="300">
 ###  email: dldl8675@gmail.com
 
 
