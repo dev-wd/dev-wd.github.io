@@ -9,22 +9,22 @@ categories:
 ---
 
 
-When I am using HTTP connection for login system , I should catch the end point of getting data. 
+When I use HTTP connection for login system , I should catch the end point of getting data. 
 
-As you know, HTTP connection is done asychronously, I cannot use return value for this case.
+As you know, when HTTP connection is done asychronously, you should not use return value for this case.
 
-I have used Future function in Flutter, but I spent some time to find what is same role in swift.
+I have used Future function in Flutter, but I had struggle to find the similar function in swift.
 
 Escape closure supports @escaping property.
-If you add this property after the name of argument(:), this recieve  'Completion handler' which supports sending async task completion state to other side and sending the return value as well.
+If you add @escaping property after the name of argument(:), escape closure recieves 'Completion handler' which supports sending async task completion state to other side and sending the return value as well.
 
 If @escaping  property is not exist after argument, then this is Nonescape Closure.
-If you do not clarify @escaping property, Nonescape property is default.
+If you do not add @escaping property, Nonescape property is default.
 
-Nonescape property don't support completion handler.
+Nonescape property does not support completion handler.
 
 
-Because we have used Nonescape closure so far, I will just focus on showing escape closure, and completion handler.
+Because we have used Nonescape closure so far, I just focus on showing escape closure, and completion handler.
 
 
 
@@ -34,7 +34,7 @@ I arranged 2 cases which I used to do.
 - Completion Handle with TrailingClosure
 - Completion Handle with DeclaredClosure
 
-There are getFruitColor example below.
+There are getFruitColor examples below.
 
 If you send parameter on getFruitColor function with completionHanlder, then completionHanlder prints the color of given fruit.
 
@@ -43,10 +43,10 @@ If you send parameter on getFruitColor function with completionHanlder, then com
 
 ## Case 1. Completion Handle with TrailingClosure
 
-- Implement case is implemented in 'viewdidload'.
+- Implement case is implemented in 'viewDidLoad()'.
 
-- 'completion' is completionHandler, it should get '@escaping'
-- you don't need to send 'completion' parameter, add trailing closure instead.
+- 'completion' is completionHandler which includes '@escaping' property.
+- you don't need to send 'completion' parameter, but add trailing closure instead.
 
 
 
@@ -136,7 +136,7 @@ Asynchoronous function's end state can be catched by EscapingClosure.
 
 Do not return the value on your service API.
 
-Let's completion handle by completionHandler from now on!
+Let's get completion state by completionHandler from now on!
 
 
 
