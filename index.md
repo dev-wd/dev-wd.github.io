@@ -11,7 +11,11 @@ entries_layout: list
 
 
 <img src="images/profile.jpeg" width="300" height="300">
-###  email: dldl8675@gmail.com
+
+
+###  email: 
+
+dldl8675@gmail.com
 
 
 ### GitHub
