@@ -28,10 +28,3 @@ entries_layout: list
 
 ##### Instagram
 ###### https://www.instagram.com/wd______/
-
-
-## About Me
-
-## SKILLs
-
-## ACTIVITIES
