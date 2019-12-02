@@ -1,14 +1,9 @@
 ---
 title: "[Python] BOJ 17135 캐슬 디펜스"
-layout: collection
-collection: algorithm
+layout: post
 date: 2019-11-25 22:15:38 -0400
-categories:
-  - alorithm
-  
+categories: alorithm
 ---
-
-
 
 - https://www.acmicpc.net/problem/17135
 
