@@ -1,5 +1,4 @@
 theme: jekyll-theme-so-simple
-# remote_theme: mmistakes/so-simple-theme
 locale: en-US
 title: "WD DEV"
 description: "Enjoy Application Developement!"
@@ -9,6 +8,7 @@ logo: "/images/logo.png" # path of site logo, e.g. "/images/logo.png"
 date_format: "%B %-d, %Y"
 read_time: true # reading time estimates, e.g. true
 words_per_minute: # 200
+environment: production
 mathjax: # MathJax equations, e.g. true
 google_fonts:
   - name: "Source Sans Pro"
@@ -36,7 +36,7 @@ feed:
 # paginate_path: /page:num/
 
 # Search
-search_full_content: false # can have performance implications for large sites
+search_full_contvt: false # can have performance implications for large sites
 
 # Taxonomy pages
 # category_archive_path: "/categories/#"
