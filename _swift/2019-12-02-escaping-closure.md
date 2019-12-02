@@ -3,8 +3,8 @@ title: "Swift Async Programming @escaping closure, and  Completion handler"
 date: 2019-12-02 20:46:32 -0400
 layout: post
 categories: swift
-  
 ---
+
 
 
 When I use HTTP connection for login system , I should catch the end point of getting data. 
