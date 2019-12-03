@@ -1,11 +1,8 @@
 ---
 title: "Applying UITableview with RxSwift in various situations"
 date: 2019-11-24 20:32:03 -0400
-layout: collection
-collection: swift
-categories:
-  - swift
-  
+layout: post
+categories: swift
 ---
 
 Applying UITableview with RxSwift in various situations is an difficult issue for junier developer including me.

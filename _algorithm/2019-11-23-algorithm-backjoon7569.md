@@ -1,11 +1,9 @@
 ---
 title: "[Python] BOJ 7569 토마토"
-layout: collection
+layout: post
 collection: algorithm
 date: 2017-10-20 08:26:28 -0400
-categories:
-  - alorithm
-  
+categories: algorithm
 ---
 
 
