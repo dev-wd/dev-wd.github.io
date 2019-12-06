@@ -35,8 +35,8 @@ feed:
 # paginate: 10
 # paginate_path: /page:num/
 # Taxonomy pages
-category_archive_path: "/categories/#"
-tag_archive_path: "/tags/#"
+#category_archive_path: "/categories/#"
+#tag_archive_path: "/tags/#"
 
 # Search
 search_full_contvt: false # can have performance implications for large sites
