@@ -61,20 +61,20 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
 
-# Collections
-#collections:
-#  swift:
-#    output: true
-#    permalink: /:collection/:path/
-#  flutter:
-#    output: true
-#    permalink: /:collection/:path/
-#  algorithm:
-#    output: true
-#    permalink: /:collection/:path/
-#  conference:
-#    output: true
-#    permalink: /:collection/:path/
+Collections
+collections:
+  swift:
+    output: true
+    permalink: /:collection/:path/
+  flutter:
+    output: true
+    permalink: /:collection/:path/
+  algorithm:
+    output: true
+    permalink: /:collection/:path/
+  conference:
+    output: true
+    permalink: /:collection/:path/
 
 # Front Matter Defaults
 defaults:
