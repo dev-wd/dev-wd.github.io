@@ -61,7 +61,7 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
 
-Collections
+#Collections
 collections:
   swift:
     output: true
