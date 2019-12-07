@@ -1,7 +1,8 @@
 ---
 title: Conference
-layout: collection
+layout: category
 collection: conference
 permalink: /conference/
 entries_layout: list
+taxonomy: conference
 ---
