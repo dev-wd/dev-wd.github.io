@@ -13,12 +13,13 @@ PM님께서 공유를 해주셔서 신청하여 가게 되었다.
 
 릴리쿰 스테이지라는 홍대입구 쪽에 있는 스테이지에서 진행되었으며 19-22시 총 3시간 동안 진행되었다.
 
-<이미지> 릴리쿰 스테이지
+<img src="/images/encryption/en1.png" width="600" height="300">
+<img src="/images/encryption/en2.png" width="600" height="300">
 
 삼성역에서 퇴근해서 홍대입구역에서 걸어서 15분은 꾀나 먼 거리라 15분 정도 지각을 하였다.
 강의를 할 수 있는 작은 스테이지인것 같았고 카페처럼 음료주문 가능.
 
-<이미지> 프로그램
+<img src="/images/encryption/en4.png" width="600" height="300">
 
 프로그램이 분야가 한정되지 않아서 인상깊었다.
 
@@ -84,6 +85,8 @@ RSA방식으로 이 문제를 해결할 수 있었다.
 ## RSA
 ###  public key - cipher
 
+<img src="/images/encryption/en5.png" width="600" height="300">
+
 RSA public key 방식
 
 private key, public key를 만듦
@@ -92,6 +95,8 @@ A가 private key public key를 만들고 public key만 B에게 보낸다. public
 
 
 ### public key - sign
+
+<img src="/images/encryption/en6.png" width="600" height="300">
 
 전자서명 
 A가 보낸 정보를 A가 보냈다고 B가 확신을 할 수 있도록
