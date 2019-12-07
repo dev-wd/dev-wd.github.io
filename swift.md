@@ -1,7 +1,8 @@
 ---
 title: Swift
-layout: collection
+layout: category
 collection: swift
 permalink: /swift/
 entries_layout: list
+taxonomy: Algorithm
 ---
