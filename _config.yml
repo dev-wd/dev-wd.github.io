@@ -2,7 +2,7 @@ theme: jekyll-theme-so-simple
 locale: en-US
 title: "WD DEV"
 description: "Enjoy Application Developement!"
-baseurl: "" # the subpath of your site, e.g. "/blog"
+baseurl: / # the subpath of your site, e.g. "/blog"
 url: "https://dev-wd.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 logo: "/images/logo.png" # path of site logo, e.g. "/images/logo.png"
 date_format: "%B %-d, %Y"
@@ -39,7 +39,7 @@ category_archive_path: "/categories/#"
 tag_archive_path: "/tags/#"
 
 # Search
-search_full_contvt: false # can have performance implications for large sites
+search_full_content: true # can have performance implications for large sites
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -102,6 +102,9 @@ author:
   picture: /images/profile.jpeg
   email: dldl8675@gmail.com
   links:
+    - title: Email
+      url: mailto:dldl8675@gmail.com
+      icon: fas fa-envelope-square
     - title: GitHub
       url: https://github.com/dev-wd
       icon: fab fa-github-square
