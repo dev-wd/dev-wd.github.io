@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Liam SY Kim
+title: 
 limit: 5
 show_excerpts: true
 entries_layout: list
@@ -9,10 +9,12 @@ entries_layout: list
 
 
 
+## Profile
 
 <img src="images/profile.jpeg" width="300" height="300">
 
-
+##### Name
+###### Liam Sooyong Kim
 #####  Email
 
 ###### dldl8675@gmail.com
