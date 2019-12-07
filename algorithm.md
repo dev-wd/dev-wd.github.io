@@ -1,7 +1,7 @@
 ---
 title: Algorithm
-layout: collection
-collection: algorithm
+layout: category
 permalink: /algorithm/
 entries_layout: list
+taxonomy: Algorithm
 ---
