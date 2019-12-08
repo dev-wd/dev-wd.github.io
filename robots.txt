@@ -1,0 +1,26 @@
+---
+layout: null
+permalink: robots.txt
+---
+# Filter pages and documents for the noindex key
+
+{%- assign
+  noindex = site.pages |
+    concat: site.documents |
+    where: "sitemap", false |
+    where_exp: "node", "node.url != '/atom.xml'"
+%}
+{%- assign noindexSize = noindex | size %}
+
+User-agent: *
+
+{% if site.production != true -%}
+Disallow: /
+{% elsif noindexSize > 0 -%}
+{% for item in noindex -%}
+Disallow: {{ item.url }}
+{% endfor -%}
+{% else -%}
+Disallow:
+{% endif %}
+Sitemap: {{ site.url }}/sitemap.xml
