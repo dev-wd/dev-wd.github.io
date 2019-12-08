@@ -13,73 +13,45 @@ title : Sitemap
 
 <url>
   <loc>https://dev-wd.github.io/</loc>
-  <lastmod>2019-12-08T14:09:33+00:00</lastmod>
-  <priority>1.00</priority>
 </url>
 <url>
   <loc>https://dev-wd.github.io/conference/</loc>
-  <lastmod>2019-12-08T14:09:33+00:00</lastmod>
-  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://dev-wd.github.io/flutter/</loc>
-  <lastmod>2019-12-08T14:09:33+00:00</lastmod>
-  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://dev-wd.github.io/swift/</loc>
-  <lastmod>2019-12-08T14:09:33+00:00</lastmod>
-  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://dev-wd.github.io/algorithm/</loc>
-  <lastmod>2019-12-08T14:09:33+00:00</lastmod>
-  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://dev-wd.github.io/conference/encryption/</loc>
-  <lastmod>2019-12-08T14:09:33+00:00</lastmod>
-  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://dev-wd.github.io/swift/gcd/</loc>
-  <lastmod>2019-12-08T14:09:33+00:00</lastmod>
-  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://dev-wd.github.io/swift/escaping-closure/</loc>
-  <lastmod>2019-12-08T14:09:33+00:00</lastmod>
-  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://dev-wd.github.io/alorithm/backjoon17135/</loc>
-  <lastmod>2019-12-08T14:09:33+00:00</lastmod>
-  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://dev-wd.github.io/swift/tableview-rxswift-example/</loc>
-  <lastmod>2019-12-08T14:09:33+00:00</lastmod>
-  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://dev-wd.github.io/page2/</loc>
-  <lastmod>2019-12-08T14:09:33+00:00</lastmod>
-  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://dev-wd.github.io/conference/letsswift2019/</loc>
-  <lastmod>2019-12-08T14:09:33+00:00</lastmod>
-  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://dev-wd.github.io/algorithm/backjoon7569/</loc>
-  <lastmod>2019-12-08T14:09:33+00:00</lastmod>
-  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://dev-wd.github.io/categories/</loc>
-  <lastmod>2019-12-08T14:09:33+00:00</lastmod>
-  <priority>0.64</priority>
 </url>
 
 
