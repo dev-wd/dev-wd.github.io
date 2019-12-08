@@ -4,6 +4,7 @@ title: "WD DEV"
 description: "Enjoy Application Developement!"
 baseurl: "/" # the subpath of your site, e.g. "/blog"
 url: "dev-wd.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+production_url : http://dev-wd.github.io
 logo: "/images/logo.png" # path of site logo, e.g. "/images/logo.png"
 date_format: "%B %-d, %Y"
 read_time: true # reading time estimates, e.g. true
