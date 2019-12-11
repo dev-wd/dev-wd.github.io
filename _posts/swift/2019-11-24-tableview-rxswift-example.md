@@ -5,14 +5,14 @@ layout: post
 categories: swift
 ---
 
-Applying UITableview with RxSwift in various situations is an difficult issue for junier developer including me.
+Applying UITableview with RxSwift in various situations is an difficult issue for junior developer including me.
 
 Of course, there are other ways to implement these tableview. Nevertheless, it is the one of answers 
 
 
 I hope my example codes and explanation help you to save your time.
 
-- Overall Code : https://github.com/dev-wd/tableview_with_rxswift_example
+- FULL Code : [LINK] (https://github.com/dev-wd/tableview_with_rxswift_example)
 
 
 ### Fruit 3 cases example
@@ -41,16 +41,28 @@ Since TableView IBOutlet supports custom tableview size, I usually don't use 'UI
 
 ```swift 
 
-@IBOutlet weak var tableRef: UITableView!
+class FruitEX1ViewController: UIViewController, UITableViewDelegate{
+    @IBOutlet weak var tableRef: UITableView!
     
-    var fruitDic: BehaviorRelay<[[String : String]]> = BehaviorRelay(value:[["name":"apple"],["name":"banana"], ["name":"cherries"],["name":"grapes"],["name":"lemon"],["name":"orange"],["name":"strawberry"],["name":"tomato"]])
+    var fruitDic: BehaviorRelay<[[String : String]]> =
+        BehaviorRelay(value:
+            [["name":"apple"],
+             ["name":"banana"],
+             ["name":"cherries"],
+             ["name":"grapes"],
+             ["name":"lemon"],
+             ["name":"orange"],
+             ["name":"strawberry"],
+             ["name":"tomato"]])
+    
     var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        InputTableView()
+        inputTableView()
     }
-    
+    ...
+}
 ```
 
 ### TableView + RxSwift
@@ -66,27 +78,33 @@ If you don't add this command, rxBinding will be remained on memory.
 
 ```swift
 
-func InputTableView() {
+func inputTableView() {
         
-        // Set tableview delegate. (for setting table view cell height)
-        tableRef.rx.setDelegate(self).disposed(by: disposeBag)
+    // Set tableview delegate. (for setting table view cell height)
+    tableRef.rx
+        .setDelegate(self)
+        .disposed(by: disposeBag)
         
-         // Bind fruit dictionary and tableview
-        fruitDic.asObservable().bind(to: tableRef.rx.items(cellIdentifier: "Cell", cellType: FruitEX1Cell.self))
-        {index, element, cell in
+    // Bind fruit dictionary and tableview
+    fruitDic.asObservable()
+        .bind(to: tableRef.rx
+            .items(cellIdentifier: "Cell", cellType: FruitEX1Cell.self))
+        { index, element, cell in
+                
             // Write image, name for cell label.
             cell.fruitImage.image = UIImage(named: element["name"]!)
             cell.fruitNameLabel.text = element["name"]
-        }.disposed(by: disposeBag)
+    }.disposed(by: disposeBag)
         
-        tableRef.tableFooterView = UIView()
-    }
-    
-    
+    tableRef.tableFooterView = UIView()
+}
+     
 ```
 
 ## Case 2. TableView + textfield in cell
 
+ <span style="color:red">This example has recycling issue. I will fix it as soon as possible.</span>
+ 
 <img src="/images/rxswift_tableview/example2_1.png" width="300" height="600">
 
 Showing number Label and textfield on tableview. If you put the fruit name on textfield, and then you will see the images of each fruits.
@@ -106,7 +124,7 @@ Let us know about the details below.
 
 ### Declared variable
 
-Other variables are same, but we declare two more BehaviorRelay Dictionary.
+Other variables are same, but we declare two more BehaviorRelay Dictionaries.
 
 BehaviorRelay basically supports only one-direction event. In this example, we cannot use a BehaviorRelay for both input and output.
 
@@ -119,18 +137,38 @@ class FruitEX2ViewController: UIViewController , UITableViewDelegate{
     @IBOutlet weak var nextPageButton: UIButton!
     
     
-    var firstFruitDic: BehaviorRelay<[[String : String]]> = BehaviorRelay(value:[["number":"1.","name":""],["number":"2.","name":""],["number":"3.","name":""],["number":"4.","name":""],["number":"5.","name":""],["number":"6.","name":""],["number":"7.","name":""],["number":"8.","name":""]])
+    var firstFruitDic: BehaviorRelay<[[String : String]]> =
+        BehaviorRelay(value:
+            [["number":"1.","name":""],
+             ["number":"2.","name":""],
+             ["number":"3.","name":""],
+             ["number":"4.","name":""],
+             ["number":"5.","name":""],
+             ["number":"6.","name":""],
+             ["number":"7.","name":""],
+             ["number":"8.","name":""]])
     
-    var updatedFruitDic: BehaviorRelay<[[String : String]]> = BehaviorRelay(value:[["number":"1.","name":""],["number":"2.","name":""],["number":"3.","name":""],["number":"4.","name":""],["number":"5.","name":""],["number":"6.","name":""],["number":"7.","name":""],["number":"8.","name":""]])
+    var updatedFruitDic: BehaviorRelay<[[String : String]]> =
+        BehaviorRelay(value:
+        [["number":"1.","name":""],
+         ["number":"2.","name":""],
+         ["number":"3.","name":""],
+         ["number":"4.","name":""],
+         ["number":"5.","name":""],
+         ["number":"6.","name":""],
+         ["number":"7.","name":""],
+         ["number":"8.","name":""]])
     
-       var disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     var temDic : [[String: String]] = []
+    ...
+}
     
 ```
 
 ### TableView + RxSwift
 
-Binding is same with previous one.
+Binding rule is same with previous one.
 
 We should focus on two points here.
 
@@ -138,28 +176,26 @@ Change the value on temDic and accept it from updatedFruitDic. This updatedFruit
 
 
  ```swift 
-func InputTableView() {
+func inputTableView() {
         
-        temDic = self.firstFruitDic.value
-        // Set tableview delegate. (for setting table view cell height)
-        tableRef.rx.setDelegate(self).disposed(by: disposeBag)
+   // Set tableview delegate. (for setting table view cell height)
+   tableRef.rx
+      .setDelegate(self)
+       .disposed(by: disposeBag)
         
-        // Bind fruit dictionary and tableview.
-        firstFruitDic.asObservable().bind(to: tableRef.rx.items(cellIdentifier: "Cell", cellType: FruitEX2Cell.self))
-        {index, element, cell in
-            
-        // Write number for cell textfield.
-        cell.fruitNumber.text = element["number"]
-            
-        // Update Dictionary from cell textfield.
-        cell.fruitTextField.rx.text.orEmpty.asDriver().drive(onNext: { cellvalue in
-            self.temDic[index]["name"] = cellvalue
-            self.updatedFruitDic.accept(self.temDic)
-
-            }).disposed(by: cell.bag)
-           
-        }.disposed(by: disposeBag)
-    }
+   // Bind fruit dictionary and tableview
+   fruitDic.asObservable()
+       .bind(to: tableRef.rx
+           .items(cellIdentifier: "Cell", cellType: FruitEX1Cell.self))
+       { index, element, cell in
+                
+           // Write image, name for cell label.
+           cell.fruitImage.image = UIImage(named: element["name"]!)
+           cell.fruitNameLabel.text = element["name"]
+   }.disposed(by: disposeBag)
+        
+   tableRef.tableFooterView = UIView()
+}
  ```
 
 
@@ -175,10 +211,10 @@ Also, you should 'prepareForReuse' on your cell like below.
 
 ```swift 
 // Make disposbag empty for reusing cell.
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        bag = DisposeBag()
-    }
+override func prepareForReuse() {
+    super.prepareForReuse()
+    bag = DisposeBag()
+}
 ```
  
  
@@ -197,12 +233,22 @@ Because tableview will not get input from cell, We don't need multiple Dictionar
 
 
 ```swift 
-
-  @IBOutlet weak var tableRef: UITableView!
+class FruitEX3ViewController: UIViewController, UITableViewDelegate {
+    @IBOutlet weak var tableRef: UITableView!
     
-    var fruitDic: BehaviorRelay<[[String : String]]> = BehaviorRelay(value:[["name":"apple"],["name":"banana"], ["name":"cherries"],["name":"grapes"],["name":"lemon"],["name":"orange"],["name":"strawberry"],["name":"tomato"]])
+    var fruitDic: BehaviorRelay<[[String : String]]> = BehaviorRelay(value:
+        [["name":"apple"],
+         ["name":"banana"],
+         ["name":"cherries"],
+         ["name":"grapes"],
+         ["name":"lemon"],
+         ["name":"orange"],
+         ["name":"strawberry"],
+         ["name":"tomato"]])
     
     var disposeBag = DisposeBag()
+    ...
+}
     
 ```
 ### TableView + RxSwift
@@ -218,10 +264,10 @@ Also, you should put 'prepareForReuse' on your cell like below.
 
 ```swift 
 // Make disposbag empty for reusing cell.
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        bag = DisposeBag()
-    }
+override func prepareForReuse() {
+    super.prepareForReuse()
+    bag = DisposeBag()
+}
 ```
  
  As same with example2, tempDic is accepted by fruitDic. 
@@ -231,35 +277,37 @@ Also, you should put 'prepareForReuse' on your cell like below.
 
  
 ```swift 
-    func InputTableView() {
+func inputTableView() {
         
-        // Set tableview delegate. (for setting table view cell height)
-        tableRef.rx.setDelegate(self).disposed(by: disposeBag)
+    // Set tableview delegate. (for setting table view cell height)
+    tableRef.rx
+        .setDelegate(self)
+        .disposed(by: disposeBag)
         
-        // Bind fruit dictionary and tableview.
-        fruitDic.asObservable().bind(to: tableRef.rx.items(cellIdentifier: "Cell", cellType: FruitEX3Cell.self))
+    // Bind fruit dictionary and tableview.
+    fruitDic.asObservable()
+        .bind(to: tableRef.rx
+            .items(cellIdentifier: "Cell", cellType: FruitEX3Cell.self))
         {index, element, cell in
-            
+                
             // Write image, name for cell label.
             cell.fruitImage.image = UIImage(named: element["name"]!)
             cell.fruitNameLabel.text = element["name"]
-           
+                
             // Remove cell by cancel button.
             cell.cancelButton.rx.tap
-             .subscribe(onNext: { [weak self] in
-             let curIndex = index
-                 var tempDic = self!.fruitDic.value
-            tempDic.remove(at: curIndex)
-                 self!.fruitDic.accept(tempDic)
-                 print("ViewModel.QRDid: ",self!.fruitDic.value)
-             }).disposed(by: cell.bag)
-            
-        }.disposed(by: disposeBag)
+               .subscribe(onNext: { [weak self] in
+                    let curIndex = index
+                    var tempDic = self!.fruitDic.value
+                    tempDic.remove(at: curIndex)
+                    self!.fruitDic.accept(tempDic)
+                    print("ViewModel.QRDid: ",self!.fruitDic.value)
+                })
+                .disposed(by: cell.bag)
+    }.disposed(by: disposeBag)
         
-        tableRef.tableFooterView = UIView()
-    }
-    
-
+    tableRef.tableFooterView = UIView()
+}
 ```
 
 ## In the end
@@ -272,8 +320,8 @@ I feel hard to deal with various situation.
 
 - Nested RxSwift Handling
 
-These reasons makes RxSwift + Tableview dificult. 
+These reasons makes RxSwift + Tableview difficult. 
 
-Of course there can be exist a better way, but as a junior developer, I want to show tell you what makes you mistakes easily about this subject.
+Of course there can be exist a better way, but as a junior developer, I want to show you what makes you mistakes easily about this subject.
 
 I hope this helps you:)
