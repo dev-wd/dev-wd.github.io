@@ -52,34 +52,31 @@ If you send parameter on getFruitColor function with completionHanlder, then com
 ```swift
 
 // case 1 : Completion Handle with TrailingClosure
-    
-    func getFruitColorwithTrailingClosure(_ fruitName : String, completion: @escaping (String)-> Void) {
+func getFruitColorwithTrailingClosure(_ fruitName : String, completion: @escaping (String)-> Void) {
         
-        var color = "Not yet"
+    var color = "Not yet"
         
-        if fruitName == "banana" {
-            color = "yellow"
-        }
-        
-        if fruitName == "apple" {
-            color = "red"
-        }
-        
-        if fruitName == "melon" {
-            color = "green"
-        }
-        
-        completion(color)
+    if fruitName == "banana" {
+        color = "yellow"
     }
+        
+    if fruitName == "apple" {
+        color = "red"
+    }
+        
+    if fruitName == "melon" {
+           color = "green"
+    }
+        
+    completion(color)
+}
     
     
 // Implement case 1
-        
-        getFruitColorwithTrailingClosure("banana") {
-            color in
-            
-            print(color)
-        }
+getFruitColorwithTrailingClosure("banana") {
+    color in
+    print(color)
+}
         
         
 ```
@@ -94,37 +91,33 @@ If you send parameter on getFruitColor function with completionHanlder, then com
 
 ```swift
 // Declare closure for case 2.
+let getColorClosure : (String) -> Void = {
+    color in
+    print(color)
+}
     
-    let getColorClosure : (String) -> Void = {
-        color in
-        print(color)
-    }
-    
-    
- // case 2 : Completion Handle with DeclaredClosure
-    
+// case 2 : Completion Handle with DeclaredClosure
 func getFruitColorwithClosure(_ fruitName : String, completion: @escaping (String)-> Void) {
-        var color = "Not yet"
+    var color = "Not yet"
         
-        if fruitName == "banana" {
-            color = "yellow"
-        }
-        
-        if fruitName == "apple" {
-            color = "red"
-        }
-        
-        if fruitName == "melon" {
-            color = "green"
-        }
-        
-        completion(color)
-        
+    if fruitName == "banana" {
+        color = "yellow"
     }
-    
-     // Implement case 2
         
-        getFruitColorwithClosure("melon",completion: getColorClosure)
+    if fruitName == "apple" {
+        color = "red"
+    }
+        
+    if fruitName == "melon" {
+        color = "green"
+    }
+        
+    completion(color)
+        
+}
+    
+// Implement case 2        
+getFruitColorwithClosure("melon",completion: getColorClosure)
     
 ```
 
