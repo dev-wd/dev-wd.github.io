@@ -12,7 +12,7 @@ Of course, there are other ways to implement these tableview. Nevertheless, it i
 
 I hope my example codes and explanation help you to save your time.
 
-- FULL Code : [LINK] (https://github.com/dev-wd/tableview_with_rxswift_example)
+- FULL Code : [LINK](https://github.com/dev-wd/tableview_with_rxswift_example)
 
 
 ### Fruit 3 cases example
