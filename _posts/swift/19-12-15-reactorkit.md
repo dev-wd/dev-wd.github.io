@@ -17,12 +17,12 @@ Because I used to use flutter bloc in flutter, It is possible to learn at once f
 <img src="/images/reactorkitexample/reactorkit4.png" width="800" height="400">
 __ref__ : github.com/ReactorKit/ReactorKit
 
-In this image, Reactor's role is like state manager. As you guys know, When the action comes asynchoronously from View, there exists delay to complete the action and to make a state. 
+In this image, Reactor's role is like __state manager__. As you guys know, When the action comes asynchoronously from View, there exists delay to complete the action and to make a state. 
 
-Mutate() process action, convert to mutation, and send the mutation to reduce() function. Because reduce() return state which is converted from mutation, we can reflect state from the reactor immedietly on View.
+__Mutate()__ process action, convert to mutation, and send the mutation to reduce() function. Because __reduce()__ return state which is converted from mutation, we can reflect state from the reactor immedietly on View.
 
 Furthermore, Some cases we need to bind servies api on reactor to show view state.
-In this case, mutate() send state to the view based on action, and service. Mutate() also can send state to service as well.
+In this case, __mutate()__ send state to the view based on action, and service. Mutate() also can send state to service as well.
 
 From the reactor, Action is input, and state is output. these action (input) and state (output) is stream, and we can implement it with RxSwift. 
 
@@ -31,7 +31,7 @@ Next, Here are one-line explaination for each reactor functions from [ReactorKit
 
 - __mutate()__ :  receives an Action and generates an Observable<Mutation>.
 - __reduce()__ : generates a new State from a previous State and a Mutation.
-- __transform__ :  transforms each stream. There are three transform() functions:
+- __transform()__ :  transforms each stream. There are three transform() functions:
 
 
 My examples are modified version of [ReactorKit counter example](https://github.com/ReactorKit/ReactorKit/tree/master/Examples/Counter), and I will explain the example which I modified above.
@@ -46,7 +46,7 @@ It is smiple example which can show fruit image when the user clicks the fruit n
 
 <img src="/images/reactorkitexample/reactorkit3.png" width="300" height="600">
 
-When the user clicks the orange, then reactor immediatly changes the state as 'loading' until downloading image(In this example, it just give 500 miliseconds time delay).
+When the user clicks the orange, then reactor immediatly changes the state as __'loading'__ until downloading image(In this example, it just give 500 miliseconds time delay).
 
 
 
@@ -178,15 +178,15 @@ class FruitViewController: UIViewController {
 
 
 ## Fruit Reactor
-Until now, We saw the input and output streams from the view. Next, we can dive into the reactor's internal side which converts action(event) to state.
+Until now, We saw the input and output streams from the view. Next, we can dive into the __reactor's internal side__ which converts action(event) to state.
 
 
 ### Declared Variable
 we should declare action and mutation by enum.
 
-In this example, Reactor gets action as kind of fruits, and converts as mutation which  is asking the fruit image.
+In this example, Reactor gets action as kind of fruits, and converts as __mutation__ which  is asking the fruit image.
 
-State is declared as struct which is initialized by the mutation.  
+__State__ is declared as __struct__ which is initialized by the mutation.  
 
 
 
@@ -235,9 +235,9 @@ final class FruitViewReactor: Reactor {
 
 As I mentioned above, I give 500 miliseconds delay during occuring mutation of fruit image. 
 
-Concat operater in RxSwift send serialized events, and those events are adding as group after previous event observed. 
+__Concat operater in RxSwift__ send serialized events, and those events are adding as group after previous event observed. 
 
-Because it is between 'setLoading' mutation, mutate() can send loading state to the view during the delay. 
+Because it is between __'setLoading'__ mutation, __mutate()__ can send loading state to the view during the delay. 
 
 ```swift
 final class FruitViewReactor: Reactor {
@@ -285,9 +285,9 @@ final class FruitViewReactor: Reactor {
 ```
 ### Mutation -> State
 
-reduce() returns the state which image name in assets is stored.
+__reduce()__ returns the state which image name in assets is stored.
 
-this return value is given to viewcontroller UIimageview.image. Finally, viewcontroller will show the image because of this return value.
+this return value is given to __viewcontroller UIimageview.image__. Finally, viewcontroller will show the image because of this return value.
 
 
 ```swift
