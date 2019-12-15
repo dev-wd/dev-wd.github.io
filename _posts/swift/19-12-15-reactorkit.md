@@ -4,6 +4,8 @@ date: 2019-12-15 20:15:01 -0400
 layout: post
 categories: swift
 ---
+
+
 I often heard that ReactorKit usefully give structure of RxSwift.
 
 Because I am junior developer, I am not sure that I can learn ReactorKit at first. However, I realized that Reactor pattern is similar with many other patterns. I heard that it is same pattern with Redux, and additionally I can know it is also similar with Bloc Pattern in Flutter as well.
@@ -42,17 +44,17 @@ Let's dive into the example.
 
 It is smiple example which can show fruit image when the user click the fruit named button.
 
-// image 1
+<img src="/images/reactorkitexample/reactorkit3.png" width="300" height="600">
 
 When we click the orange, then reactor immediatly change the state as 'loading' until downloading image(In this case, The example just give 500 milisecconds).
 
 
 
-// image 2
+<img src="/images/reactorkitexample/reactorkit2.png" width="300" height="600">
 
  If image finish to download image, then state changed to 'orange' and view will show the orange image.
  
- // image 3
+<img src="/images/reactorkitexample/reactorkit1.png" width="300" height="600">
  
  
  
