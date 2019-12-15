@@ -14,7 +14,7 @@ Because I used to use flutter bloc in flutter, It is possible to learn at once f
 
 
 ## Concept
-// reactorkit supported image
+<img src="/images/reactorkitexample/reactorkit4.png" width="800" height="400">
 
 In this image, Reactor's role is like state manager. As you guys know, When the action comes from View,  there exists delay to complete the action and make a state for. 
 
@@ -39,8 +39,7 @@ My examples are modified version of [ReactorKit counter example](https://github.
 
 Let's dive into the example.
 
-
-## Fruit View
+## Fruit Example
 
 It is smiple example which can show fruit image when the user click the fruit named button.
 
@@ -57,8 +56,20 @@ When we click the orange, then reactor immediatly change the state as 'loading' 
 <img src="/images/reactorkitexample/reactorkit1.png" width="300" height="600">
  
  
+This example has two classes
  
+- FruitViewController
+- FruitViewReactor
+ 
+ 
+## FruitViewController
+
+
 ### Declared Variable
+
+As I mentioned there are five fruit buttons.
+Additionally we bind FruitViewReactor on ViewController.
+
 
 ```swift
 class FruitViewController: UIViewController {
@@ -79,6 +90,10 @@ class FruitViewController: UIViewController {
 ```
 
 ### Bind Reactor
+
+Here are the binding function with FruitViewReactor.
+
+Each button IB is tapped by RxSwift, and send transformed event which is 'reactor action' to the binded RruitViewReactor.
 
 ```swift
 class FruitViewController: UIViewController {
@@ -121,6 +136,14 @@ class FruitViewController: UIViewController {
 }
 ```
 
+Above one is reactor's input, but this one is output of the reactor.
+
+Reactor state is recieved by viewcontroller.
+Subscibe Reactor state and viewcontroller set the fruitimage with the state value.
+Because the state value is same as image name, so image can be shown.
+
+
+
 
 ```swift
 class FruitViewController: UIViewController {
@@ -153,6 +176,9 @@ class FruitViewController: UIViewController {
 
 
 ## Fruit Reactor
+Until now, We saw the input and output stream from the view, and we can dive into the reactor's internal side which transform action(event) to state.
+
+
 ### Declared Variable
 ```swift
 final class FruitViewReactor: Reactor {
