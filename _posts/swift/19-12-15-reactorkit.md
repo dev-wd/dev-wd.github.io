@@ -6,7 +6,7 @@ categories: swift
 ---
 
 
-I often heard that ReactorKit usefully give structure of RxSwift.
+I often have heard that ReactorKit usefully give structure of RxSwift.
 
 Because I am junior developer, I am not sure that I can learn ReactorKit at first. However, I realized that Reactor pattern is similar with many other patterns. I heard that it is same pattern with Redux, and additionally I can know it is also similar with Bloc Pattern in Flutter as well.
 
@@ -15,15 +15,16 @@ Because I used to use flutter bloc in flutter, It is possible to learn at once f
 
 ## Concept
 <img src="/images/reactorkitexample/reactorkit4.png" width="800" height="400">
+__ref__ : github.com/ReactorKit/ReactorKit
 
-In this image, Reactor's role is like state manager. As you guys know, When the action comes from View,  there exists delay to complete the action and make a state for. 
+In this image, Reactor's role is like state manager. As you guys know, When the action comes asynchoronously from View, there exists delay to complete the action and to make a state. 
 
-Mutate() function treat Action and process  and pass it to reduce() function. Because reduce() send state from reactor to view, we can reflect state from the reactor immedietly on View.
+Mutate() process action, convert to mutation, and send the mutation to reduce() function. Because reduce() return state which is converted from mutation, we can reflect state from the reactor immedietly on View.
 
-Furhermore, Some cases we need to bind servies api on reactor to show view state.
-In this case, mutate() occur state based on action, and service. Mutate() also can send data to service as well.
+Furthermore, Some cases we need to bind servies api on reactor to show view state.
+In this case, mutate() send state to the view based on action, and service. Mutate() also can send state to service as well.
 
-From the reactor, Action is input, and state is output. these action (input) and state (stream) is stream, and we can implement it with RxSwift. 
+From the reactor, Action is input, and state is output. these action (input) and state (output) is stream, and we can implement it with RxSwift. 
 
 
 Next, Here are one-line explaination for each reactor functions from [ReactorKit](https://github.com/ReactorKit/ReactorKit)
@@ -33,7 +34,7 @@ Next, Here are one-line explaination for each reactor functions from [ReactorKit
 - __transform__ :  transforms each stream. There are three transform() functions:
 
 
-My examples are modified version of [ReactorKit counter example](https://github.com/ReactorKit/ReactorKit/tree/master/Examples/Counter), and I will explain the example what I modified with.
+My examples are modified version of [ReactorKit counter example](https://github.com/ReactorKit/ReactorKit/tree/master/Examples/Counter), and I will explain the example which I modified above.
 
 - FULL Code : [LINK](https://github.com/dev-wd/simple_swift_example/tree/master/reactorKit)
 
@@ -41,17 +42,17 @@ Let's dive into the example.
 
 ## Fruit Example
 
-It is smiple example which can show fruit image when the user click the fruit named button.
+It is smiple example which can show fruit image when the user clicks the fruit named button.
 
 <img src="/images/reactorkitexample/reactorkit3.png" width="300" height="600">
 
-When we click the orange, then reactor immediatly change the state as 'loading' until downloading image(In this case, The example just give 500 milisecconds).
+When the user clicks the orange, then reactor immediatly changes the state as 'loading' until downloading image(In this example, it just give 500 miliseconds time delay).
 
 
 
 <img src="/images/reactorkitexample/reactorkit2.png" width="300" height="600">
 
- If image finish to download image, then state changed to 'orange' and view will show the orange image.
+ If image finished to download image, then state changed to 'orange' and view will show the orange image.
  
 <img src="/images/reactorkitexample/reactorkit1.png" width="300" height="600">
  
@@ -67,8 +68,9 @@ This example has two classes
 
 ### Declared Variable
 
-As I mentioned there are five fruit buttons.
-Additionally we bind FruitViewReactor on ViewController.
+As I mentioned above, there are five fruit buttons.
+
+Additionally, we binds FruitViewReactor on ViewController.
 
 
 ```swift
@@ -91,9 +93,9 @@ class FruitViewController: UIViewController {
 
 ### Bind Reactor
 
-Here are the binding function with FruitViewReactor.
+Here are the function which binded with FruitViewReactor.
 
-Each button IB is tapped by RxSwift, and send transformed event which is 'reactor action' to the binded RruitViewReactor.
+Each button IB is tapped by RxSwift, and sends transformed event which is 'reactor action' to the binded RruitViewReactor.
 
 ```swift
 class FruitViewController: UIViewController {
@@ -138,9 +140,9 @@ class FruitViewController: UIViewController {
 
 Above one is reactor's input, but this one is output of the reactor.
 
-Reactor state is recieved by viewcontroller.
-Subscibe Reactor state and viewcontroller set the fruitimage with the state value.
-Because the state value is same as image name, so image can be shown.
+State of reactor send to viewcontroller.
+After subscribing Reactor state from the viewcontroller, viewcontroller would set the fruit image with the state value.
+Because the state value is same as image name, the fruit image can be shown by UIImageView.
 
 
 
@@ -176,10 +178,18 @@ class FruitViewController: UIViewController {
 
 
 ## Fruit Reactor
-Until now, We saw the input and output stream from the view, and we can dive into the reactor's internal side which transform action(event) to state.
+Until now, We saw the input and output streams from the view. Next, we can dive into the reactor's internal side which converts action(event) to state.
 
 
 ### Declared Variable
+we should declare action and mutation by enum.
+
+In this example, Reactor gets action as kind of fruits, and converts as mutation which  is asking the fruit image.
+
+State is declared as struct which is initialized by the mutation.  
+
+
+
 ```swift
 final class FruitViewReactor: Reactor {
 
@@ -221,6 +231,14 @@ final class FruitViewReactor: Reactor {
 }
 ```
 ### Action -> Mutation
+
+
+As I mentioned above, I give 500 miliseconds delay during occuring mutation of fruit image. 
+
+Concat operater in RxSwift send serialized events, and those events are adding as group after previous event observed. 
+
+Because it is between 'setLoading' mutation, mutate() can send loading state to the view during the delay. 
+
 ```swift
 final class FruitViewReactor: Reactor {
     ...
@@ -266,6 +284,12 @@ final class FruitViewReactor: Reactor {
 }
 ```
 ### Mutation -> State
+
+reduce() returns the state which image name in assets is stored.
+
+this return value is given to viewcontroller UIimageview.image. Finally, viewcontroller will show the image because of this return value.
+
+
 ```swift
 final class FruitViewReactor: Reactor {
     ...
