@@ -4,7 +4,7 @@ title: "WD DEV"
 description: "Enjoy Application Developement!"
 baseurl: "/" # the subpath of your site, e.g. "/blog"
 url: "dev-wd.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-production_url : http://dev-wd.github.io
+production_url : dev-wd.github.io
 logo: "/images/logo.png" # path of site logo, e.g. "/images/logo.png"
 date_format: "%B %-d, %Y"
 read_time: true # reading time estimates, e.g. true
@@ -38,7 +38,7 @@ category_archive_path: "/categories/#"
 tag_archive_path: "/tags/#"
 
 # Search
-search_full_content: true # can have performance implications for large sites
+search_full_content: false # can have performance implications for large sites
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -52,14 +52,13 @@ search_full_content: true # can have performance implications for large sites
 #   - vendor/gems/
 #   - vendor/ruby/
 
-skin: "/assets/css/skins/dark.scss"
 
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-paginate
-
+  
 #Collections
 #collections:
 #  swift:
@@ -74,14 +73,13 @@ plugins:
 #  conference:
 #    output: true
 #    permalink: /:collection/:path/
-
 # Front Matter Defaults
 defaults:
   # Post defaults
   - scope:
       path: "_posts"
       type: posts
-  - values:
+    values:
       layout: post
       comments: true
       share: true
