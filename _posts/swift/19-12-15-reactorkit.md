@@ -1,5 +1,5 @@
 ---
-title: "ReactorKit Example, Let us study the flow of Reactor"
+title: "Swift ReactorKit Example, Let us study the flow of Reactor"
 date: 2019-12-15 20:15:01 -0400
 layout: post
 categories: swift
@@ -17,14 +17,14 @@ Because I used to use flutter bloc in flutter, It is possible to learn at once f
 <img src="/images/reactorkitexample/reactorkit4.png" width="800" height="400">
 __ref__ : github.com/ReactorKit/ReactorKit
 
-In this image, Reactor's role is like __state manager__. As you guys know, When the action comes asynchoronously from View, there exists delay to complete the action and to make a state. 
+In this image, Reactor's role is like __state manager__. As you guys know, When the action comes asynchoronously from view, There exists delay to complete the action and to make a state. 
 
-__Mutate()__ process action, convert to mutation, and send the mutation to reduce() function. Because __reduce()__ return state which is converted from mutation, we can reflect state from the reactor immedietly on View.
+__Mutate()__ processes action, converts to mutation, and sends the mutation to reduce() function. Because __reduce()__ returns state which is converted from mutation, we can reflect state from the reactor immedietly on view.
 
-Furthermore, Some cases we need to bind servies api on reactor to show view state.
-In this case, __mutate()__ send state to the view based on action, and service. Mutate() also can send state to service as well.
+Furthermore, we usually need to bind servies api on reactor to show view state.
+In this case, __mutate()__ sends state to the view based on action, and service. Mutate() also can send state to service.
 
-From the reactor, Action is input, and state is output. these action (input) and state (output) is stream, and we can implement it with RxSwift. 
+From the reactor, Action is input, and state is output. these action (input) and state (output) is stream, and we can implement it using RxSwift. 
 
 
 Next, Here are one-line explaination for each reactor functions from [ReactorKit](https://github.com/ReactorKit/ReactorKit)
@@ -42,17 +42,17 @@ Let's dive into the example.
 
 ## Fruit Example
 
-It is smiple example which can show fruit image when the user clicks the fruit named button.
+It is smiple example which can show fruit image when the user clicks button of fruits.
 
 <img src="/images/reactorkitexample/reactorkit3.png" width="300" height="600">
 
-When the user clicks the orange, then reactor immediatly changes the state as __'loading'__ until downloading image(In this example, it just give 500 miliseconds time delay).
+When the user clicks the orange, then reactor immediatly changes the state as __'loading'__ during downloading image(In this example, it just give 500 miliseconds time delay).
 
 
 
 <img src="/images/reactorkitexample/reactorkit2.png" width="300" height="600">
 
- If image finished to download image, then state changed to 'orange' and view will show the orange image.
+ If app finished to download image, then state changed to 'orange', and view will show the orange image.
  
 <img src="/images/reactorkitexample/reactorkit1.png" width="300" height="600">
  
@@ -93,7 +93,7 @@ class FruitViewController: UIViewController {
 
 ### Bind Reactor
 
-Here are the function which binded with FruitViewReactor.
+Here are the function which is binded with FruitViewReactor.
 
 Each button IB is tapped by RxSwift, and sends transformed event which is 'reactor action' to the binded RruitViewReactor.
 
@@ -138,11 +138,11 @@ class FruitViewController: UIViewController {
 }
 ```
 
-Above one is reactor's input, but this one is output of the reactor.
+Above one is reactor's input, this one is output of the reactor.
 
-State of reactor send to viewcontroller.
-After subscribing Reactor state from the viewcontroller, viewcontroller would set the fruit image with the state value.
-Because the state value is same as image name, the fruit image can be shown by UIImageView.
+State of reactor sends to viewcontroller.
+After subscribing state from the viewcontroller, viewcontroller would set the fruit image as the state value.
+Because the state value is same as image name, the fruit image can be shown by UIImageView on viewcontroller.
 
 
 
@@ -178,13 +178,13 @@ class FruitViewController: UIViewController {
 
 
 ## Fruit Reactor
-Until now, We saw the input and output streams from the view. Next, we can dive into the __reactor's internal side__ which converts action(event) to state.
+Until now, We saw the input and output streams from the view. Next, we dive into the __reactor's internal side__ which converts action(event) to state.
 
 
 ### Declared Variable
 we should declare action and mutation by enum.
 
-In this example, Reactor gets action as kind of fruits, and converts as __mutation__ which  is asking the fruit image.
+In this example, Reactor gets action as kind of fruits, and converts to __mutation__ which  is asking the fruit image.
 
 __State__ is declared as __struct__ which is initialized by the mutation.  
 
@@ -235,9 +235,9 @@ final class FruitViewReactor: Reactor {
 
 As I mentioned above, I give 500 miliseconds delay during occuring mutation of fruit image. 
 
-__Concat operater in RxSwift__ send serialized events, and those events are adding as group after previous event observed. 
+__Concat operater in RxSwift__ sends serialized events, and those events are adding as group after previous event observed. 
 
-Because it is between __'setLoading'__ mutation, __mutate()__ can send loading state to the view during the delay. 
+Because it is among __'setLoading'__ mutation, __mutate()__ can send loading state to the view during the delay. 
 
 ```swift
 final class FruitViewReactor: Reactor {
@@ -285,9 +285,9 @@ final class FruitViewReactor: Reactor {
 ```
 ### Mutation -> State
 
-__reduce()__ returns the state which image name in assets is stored.
+__reduce()__ returns the state of which image name in assets.
 
-this return value is given to __viewcontroller UIimageview.image__. Finally, viewcontroller will show the image because of this return value.
+this returned value is given to __viewcontroller UIimageview.image__. Finally, viewcontroller will show the image because of this return value.
 
 
 ```swift
@@ -318,4 +318,4 @@ final class FruitViewReactor: Reactor {
 ```
 ## Conclusion
 
-Because I also studing with example, I can make mistake or omit some details. Feel free to comment me what you want to modify from this example and explaination.
+Because I also studying with example, I can make mistake or omit some details. Feel free to comment me what you want to modify from this example and explaination.
