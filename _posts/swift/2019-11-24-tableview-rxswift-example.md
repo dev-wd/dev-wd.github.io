@@ -103,8 +103,7 @@ func inputTableView() {
 
 ## Case 2. TableView + textfield in cell
 
- <span style="color:red">This example has recycling issue. I will fix it as soon as possible.</span>
- 
+
 <img src="/images/rxswift_tableview/example2_1.png" width="300" height="600">
 
 Showing number Label and textfield on tableview. If you put the fruit name on textfield, and then you will see the images of each fruits.
@@ -174,27 +173,40 @@ We should focus on two points here.
 
 Change the value on temDic and accept it from updatedFruitDic. This updatedFruitDic will show you images.
 
+If the value on temDic is updated to firstFruitDic, This will occuring retain cycle. 
+
+Therefore, I make empty values of each cell by prepareForReuse(), and  update those values including textfield during recyling cell.
 
  ```swift 
 func inputTableView() {
         
-   // Set tableview delegate. (for setting table view cell height)
-   tableRef.rx
-      .setDelegate(self)
-       .disposed(by: disposeBag)
+    temDic = self.firstFruitDic.value
+    // Set tableview delegate. (for setting table view cell height)
+    tableRef.rx
+        .setDelegate(self)
+        .disposed(by: disposeBag)
         
-   // Bind fruit dictionary and tableview
-   fruitDic.asObservable()
-       .bind(to: tableRef.rx
-           .items(cellIdentifier: "Cell", cellType: FruitEX1Cell.self))
-       { index, element, cell in
-                
-           // Write image, name for cell label.
-           cell.fruitImage.image = UIImage(named: element["name"]!)
-           cell.fruitNameLabel.text = element["name"]
-   }.disposed(by: disposeBag)
-        
-   tableRef.tableFooterView = UIView()
+    // Bind fruit dictionary and tableview.
+    firstFruitDic.asObservable()
+        .bind(to: tableRef.rx
+            .items(cellIdentifier: "Cell", cellType: FruitEX2Cell.self))
+        { index, element, cell in
+            // Write number for cell textfield.
+            cell.fruitNumber.text = element["number"]
+            // Write textfield text which erased from each cell.
+            cell.fruitTextField.text = self.updatedFruitDic.value[index]["name"]
+            // Update Dictionary from cell textfield.
+            cell.fruitTextField.rx
+                .text
+                .orEmpty
+                .asObservable()
+                .bind(onNext: { cellvalue in
+                    self.temDic[index]["name"] = cellvalue
+                    self.updatedFruitDic.accept(self.temDic)
+                })
+                .disposed(by: cell.bag)
+    }
+    .disposed(by: disposeBag)
 }
  ```
 
@@ -203,7 +215,7 @@ func inputTableView() {
 
 Dispose cell diseposebag for each cell
 
-As you know, Tableview reuses cell for memory saving. That's why you must erase cell data. 
+As you know, Tableview reuses cell for memory saving. To prevent memory leak, we need to make values and disposeBag empty.
 
 It's not critial on this, but critial issue for example3 like the case erasing cell.
 
@@ -213,6 +225,9 @@ Also, you should 'prepareForReuse' on your cell like below.
 // Make disposbag empty for reusing cell.
 override func prepareForReuse() {
     super.prepareForReuse()
+    
+    fruitNumber.text = nil
+    fruitTextField.text = nil
     bag = DisposeBag()
 }
 ```
