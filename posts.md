@@ -1,7 +1,7 @@
 ---
 title: Post Archive
-layout: posts
-permalink: /posts/
+layout: post
+permalink: /post/
 show_excerpts: true
 comments: true
 sitemap: true
