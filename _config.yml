@@ -18,9 +18,7 @@ google_fonts:
     weights: "400,400i,700,700i"
 google_analytics: UA-153893327-1
 disqus:
-  shortname: gitblog-8
-twitter:
-  username: # site's Twitter username, e.g. "mmistakes"
+  shortname: wd-dev-github-blog
 
 # Liquid
 liquid:
