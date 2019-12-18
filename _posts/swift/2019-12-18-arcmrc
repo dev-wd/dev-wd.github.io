@@ -1,0 +1,169 @@
+---
+title: "Swift ARC vs MRC, and Retain cycle (+ weak,unowned)"
+date: 2019-12-18 20:32:13 -0400
+layout: post
+categories: swift
+---
+
+We have heard many times about memory leak issues, but it is hard to understand. 
+
+Usually in swift, Retain cycles occur memory leak often. Therefore, Understading ARC and retain cycles will show the way how to manage memory.
+
+
+
+__ARC__ is abbreviation of Automatic Reference Counting, and __MRC__ is abbreviation of Manual Refetence Counting.
+
+Okay then, What is the __'Reference Counting'__?
+
+This is the reason what makes me difficult to understand this concept at first.
+
+Object internally stores reference count. 
+
+// image of referencing object 
+
+If the object is referenced by variable, then we increase +1 reference count.
+
+## ARC
+
+From the above  __'Reference Counting' __  
+explaination, you could predict what ARC is.
+
+Easily say, Object automatically deinitailize after reference removed.
+
+In detail, when the reference is removed by variable, Reference count of object automatically will be -1 decreased.
+If reference count is zero, and then the object automatically would be deitialized as well.
+
+// image of ARC
+
+Swift supports ARC, so we don't need to manually count the number of object reference.
+
+This can be known by code.
+
+```swift
+class FruitClass {
+    init() {
+        print("init")
+    }
+    
+    deinit{
+        print("deinit")
+    }
+}
+
+var fruitClass : FruitClass? = FruitClass()
+fruitClass = nil
+```
+Since I usally use Fruit for example, It does not have any meaning about fruit.
+
+Because ARC supports automatic denitializing, You can see the result as below.
+
+```swift
+init
+deinit
+```
+
+## MRC
+
+I will not explain it much, but you can imagine it does not support automatic reference count.
+
+When we used obj-c, we should count reference manually.
+
+You should __manually make and count reference__ on obj-c by using alloc, new, cioy, mutalbeCopy, retain.. etc.
+
+Because swift supports ARC, We do not need to code with MRC, but it is good to know the concepts above to understand ARC well.
+
+
+
+## Retain Cycle
+
+Since ARC supports everything, it looks like we do not need to care about memory management.
+
+However, There are a exeption to deal with.
+Yes, It is retain cycle.
+
+Some cases like delegate pattern, we should pair two object as reference.
+
+// image of retain cycle.
+
+In this case, Objects are remained in memory.
+
+Each object remain 1 reference count after removing reference from variable.
+
+
+```swift
+
+
+class FruitRetainClass{
+    var fruitRetainClass: FruitRetainClass? = nil
+    init(){
+        print("init")
+    }
+    deinit{
+        print("deinit")
+    }
+}
+
+var fruitRetainClass1: FruitRetainClass? = FruitRetainClass()
+var fruitRetainClass2: FruitRetainClass? = FruitRetainClass()
+
+fruitRetainClass1?.fruitRetainClass = fruitRetainClass2
+fruitRetainClass2?.fruitRetainClass = fruitRetainClass1
+
+```
+This can be checked by code as well.
+
+The result is
+
+```swift
+init
+init
+```
+
+
+## Weak
+
+Reference which we used until now, is __strong reference__.
+__strong reference__ references object and counts reference count.
+
+However we need additional reference system for solving retain cycles issue.
+Yes, It is __weak reference__.
+
+__Weak reference__ references object, but it does not count reference count.
+
+Okay, then how can __weak reference__ solve retain cycles issue?
+
+As I explained, if the reference count of object is zero in ARC, and then the object is automatically deinitailized. 
+
+You can predict the result of retain cycles based on above fact.
+
+
+// image of weak 
+
+
+From this image, if either fruitClass1 or fruitClass2 variable remove the reference of object, Both FruitClass1 instance object and FruitClass2 instance object will be deititiallized.
+
+Therefore Making __'weak'__ the reference of retain cycle, makes problem solved.
+
+## Unowned
+
+
+It has same function as weak, but additionally it can not be nil.
+This means you can use unowned only if it does not access removed memory space.
+
+Usually, Unowned is not recommanded.
+
+
+## Conclusion
+
+I have searched many times about ARC, but It is difficult to fully understand.
+
+I feel like, "Okay, Automatically count reference.. so what?" until understanding with these picture.
+
+Drawing the image of reference relation would be help you to understand concept well.
+
+
+
+
+## Reference 
+- [[Swift] Retain cycle, weak, unowned [번역]](https://baked-corn.tistory.com/30)
+- [[iOS Swift] RC, ARC 와 MRC 란? 그리고 Strong, Weak, Unowned 는? 간단하게 적어봤습니다.](https://medium.com/@jang.wangsu/ios-swift-rc-arc-와-mrc-란-그리고-strong-weak-unowned-는-간단하게-적어봤습니다-988a293c04ac)
