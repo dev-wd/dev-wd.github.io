@@ -1,0 +1,156 @@
+---
+title: "What is Optional in Swift"
+date: 2020-01-02 14:22:13 -0400
+layout: post
+categories: swift
+---
+
+In Swift, variable must have value. Because swift wants to ensure safety from run-time error , swift do not allow NULL in variable.
+
+Alternatively, to deal the situation of NULL, swift supports __Optional Type__.
+
+## Optional Type
+__"Optional"__  is the expression which can not have value, or have value.
+
+Optional is expressed as __`Optional<Type>`__ and it can be shorten as __`?`__
+
+So, usually we use `?`. Below is the example using optional variable.
+
+
+```swift
+var fruit: String? = "apple"
+print(fruit)
+
+fruit = nil
+print(fruit)
+```
+Here is the results.
+
+```
+Optional("apple")
+nil
+```
+
+At first, I takes long time to fully understand whole concepts. The things which make me understand well is images below.
+
+It is easy to understand if you understand __`optional type`__ as a box. 
+Now, we will input or output the value on the box.
+
+// optional wrapped image
+
+it is image which express the code. 
+we call it __`Optional wrapping`__
+
+if you input nil, then the box remained empty.
+// optional unwrapped image
+
+Of course we can abstract apple and nil from boxes, it is called __`Optional unwrapping`__
+
+if you output from the empty box, it gives nil.
+
+So, this should checked if the value is exist or nil before unwrapping optional. 
+
+```swift
+var fruit: String? = "apple"
+if let fruitVal = fruit {
+    print("Fruit is \(fruitVal)")
+} else {
+    print("Fruit is nil")
+}
+```
+
+__`Optional unwrapping`__ is able only if nil type checked, but we also can forcing unwrap without that process like as below.
+
+// forced optional unwrapped image
+
+If we use __`!`__ after variable, then we can get out the value from box forcefully.
+
+
+Overally, I explained the concept with box images. I hope you understand the concept.
+
+we studied optional concepts until now, then how do we abstract value from that box?
+
+There are serveral ways to abstract value from box(unwrapping optional).
+
+## Serveral ways to unwrapping optional
+
+Indeed, I introduced __`Optional Binding`__ and __`Forced Unwrapping`__ from the above concept explaination. However, I should deep dive into their details and other ways as well. 
+
+### Optional Binding
+
+This code is __`Optional Binding`__ which assigns the value from optional variable to other variable.
+
+If fruit is nil, then it excutes else statement.
+
+We call it optional binding because value binded only if the value is not nil.
+
+
+```swift
+var fruit: String? = "apple"
+if let fruitVal = fruit {
+    print("Fruit is \(fruitVal)")
+} else {
+    print("Fruit is nil")
+}
+```
+
+### Optional Chaining
+
+### Forced Unwrapping
+As we see this by images, just get out the value from box without type check.
+Because __`Forced Unwrapping`__ can occur runtime error, it is too dangerous.
+
+
+Just adding __!__ after variable during inwrapping is so simple.
+
+```swift
+var fruit: String? = "apple"
+print(fruit!)
+```
+
+But the problem is,
+
+Because optional has nil in box(own type), it occurs runtime error like below.
+
+```swift
+fruit = nil
+print(fruit!)
+```
+Fatal error result.
+```
+Fatal error: Unexpectedly found nil while unwrapping an Optional value: file MyPlayground.playground, line 6
+```
+### Implicitly Unwrapped Optionals
+
+When we think that Logic does not occur runtime error by nil, we use it.
+
+By adding __`!`__ after the optional variable, we do not need to consider optional binding or forced unwrapping.
+
+
+```swift 
+var fruit: String! = "apple"
+print(fruit)
+fruit = nil
+print(fruit)
+```
+This is results.
+
+```
+Optional("apple")
+nil
+```
+
+Implicitly unwrapped optionals are convienient. However, because we can usually make mistake about nil, swift recommanded to use optional chaining and optional binding.
+
+## Conclusion
+Swift is the language wich is __safe, fast, expressive.__
+
+Optional is one of the representative function which shows __Swifty__.
+
+By checking NULL condition during compile time, we can persuing error safety.
+
+Hope it helps you :)
+
+## Reference
+- [swift3 ) Optional 개념 정리](https://zeddios.tistory.com/16)
+- Swift Programming 2 by YAGOM 
