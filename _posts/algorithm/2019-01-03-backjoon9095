@@ -1,0 +1,131 @@
+---
+title: "[Python] BOJ 9095 1,2,3 더하기"
+layout: post
+date: 2019-01-03 16:45:12 -0400
+categories: algorithm
+---
+
+
+한달 정도만에 알고리즘 문제풀이를 다시 시작하였다.
+감을 잃었던 부분부터 다시 살리기 위해 다이나믹 프로그래밍 문제 중에 쉬운 문제를 풀어보았다.
+
+하지만 이 문제는  DP를 복잡하게 적용하는 것보디.
+규칙을 찾아내는 것에 다소 시간이 많이 걸렸다.
+
+[문제 링크](https://www.acmicpc.net/problem/9095)
+
+[전체 코드](https://github.com/dev-wd/boj-python-solved/blob/master/boj9095.py)
+
+
+
+
+
+### 문제 이해 및 적용하기
+1,2,3 더하기로 11까지의 정수 중에 1,2,3으로만 더해서 나올 수 있는 경우의 수를 구하는 문제이다.
+
+1부터 5까지 우선 결과를 나열해보면, 규칙을 찾을 수 있다.
+
+__1 -> 1 가지__
+
+__2 -> 2 가지__
+
+__3 -> 4 가지__
+
+__4 -> 7 가지__
+
+__5 -> 13 가지__
+
+
+위를 통하여 1,2,3의 가지수을 더하면 4의 가지수이 되고, 2,3,4의 가지수를 더하게 되면 5의 가지수가 되는 걸 알 수 있다.
+
+이를 통하여 우리는 __result(n)= result(n-1) + result(n-2) + result(n-3)__ 의 점화식을 도출할 수 있겠다.
+
+이를 바탕으로 모든 가지수의 경우를 리스트에 저장을 하고 이전 값을 더하는 식으로 계산을 해주면 되겠다. 
+
+각 number를 11까지만 생각해준다고 나와있었으니 11까지 -1로 초기화를 해 준 다음에 1,2,3 에 대해서만 초기값을 지정해주었다.
+
+```python
+ # make numberCaseList 
+numberCaseList = []
+for i in range(11):
+  numberCaseList.append(-1)
+numberCaseList[0] = 1
+numberCaseList[1] = 2
+numberCaseList[2] = 4
+```
+
+그 다음에 재귀함수를 통하여 현재 접근하는 가지수가 -1이면,
+ __result(n)= result(n-1) + result(n-2) + result(n-3)__  점화식을 계산해주는식으로 작성해주었다.
+ 
+ 물론, For문으로 통하여 풀이하는게 더 간편하고 코드도 더 짧다. 본인은 DP를 풀 때에 재귀함수로 접근하는 버릇이 있어서 양해하길 바란다.
+ 
+
+
+```python
+# recursion
+def rec(n):
+  cur_n = copy.deepcopy(n)
+  tem = numberCaseList[cur_n]
+  if tem != -1:
+    return tem
+  else:
+    total = 0
+    total += (rec(cur_n-1) + rec(cur_n-2) + rec(cur_n-3))
+    numberCaseList[cur_n] =  total 
+    return total
+```
+11일 경우를 재귀함수에 넣으면 모든 경우에 대해서 알 수 있게 되고, 테스트 케이스에 따라 결과를 for loop로 출력해준다.
+
+
+```python
+rec(11 - 1)
+for i in range(len(inputList)):
+  print(numberCaseList[inputList[i]-1])
+```
+
+
+
+### 주의할 점
+이 문제는 정답율이 61퍼센트 정도이며, DP로 풀이 가능하다.
+
+다이나믹 프로그래밍을 어떻게 적용할지 깊이 고민을 해야하는 문제는 아니고, 저장만 하면 된다. 
+앞의 몇가지 경우의 수를 한번씩 다 해보면 이런 문제는 풀리기 쉽기 마련인데, 경우의 수를 찾는 것에 참을성이 있지 않아 result(n-1)+result(n-2)+result(n-3)이 n의 결과가 된다는 것을 찾아내는 것이 까다로웠다.
+
+
+### 전체 코드
+```python
+import sys
+import copy
+input = sys.stdin.readline
+
+# recursion
+def rec(n):
+  cur_n = copy.deepcopy(n)
+  tem = numberCaseList[cur_n]
+  if tem != -1:
+    return tem
+  else:
+    total = 0
+    total += (rec(cur_n-1) + rec(cur_n-2) + rec(cur_n-3))
+    numberCaseList[cur_n] =  total 
+    return total
+
+# make inputList
+testN = int(input())
+inputList = []
+for i in range(testN):
+  inputList.append(int(input()))
+
+# make numberCaseList 
+numberCaseList = []
+for i in range(11):
+  numberCaseList.append(-1)
+numberCaseList[0] = 1
+numberCaseList[1] = 2
+numberCaseList[2] = 4
+
+rec(11 - 1)
+for i in range(len(inputList)):
+  print(numberCaseList[inputList[i]-1])
+  
+```
