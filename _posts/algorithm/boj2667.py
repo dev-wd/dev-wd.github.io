@@ -1,0 +1,145 @@
+---
+title: "[Python] BOJ 2667 단자번호붙이기 BFS"
+layout: post
+date: 2020-01-05 10:50:12 -0400
+categories: algorithm
+---
+
+
+한달 정도만에 알고리즘 문제풀이를 다시 시작하였다.
+감을 잃었던 부분부터 다시 살리기 위해 다이나믹 프로그래밍 문제 중에 쉬운 문제를 풀어보았다.
+
+하지만 이 문제는  DP를 복잡하게 적용하는 것보디.
+규칙을 찾아내는 것에 다소 시간이 많이 걸렸다.
+
+[문제 링크](https://www.acmicpc.net/problem/2667)
+
+[전체 코드](https://github.com/dev-wd/boj-python-solved/blob/master/boj2667.py)
+
+
+
+
+
+### 문제 이해 및 적용하기
+이 문제는 정사각형 Matrix를 입력받고 1은 집이 있는곳, 0은 집이 없는 곳으 나타낸다.
+지도를 가지고 연결된 단지수를 구하고 단지으 수와 각 단지별 집의 수르 오름차순을 출력해줌 되는 문제이다.
+
+접근은 기본적으로 하나의 단지를 BFS(또는 DFS)로 구하고 단지를 Matrix를 순회하면서 찾아내는 식을 문제를 풀어보았다.
+
+
+전체 Matrix 입력과 각 단지별 집의 수를 담는 answerList를 초기화해주었다.
+
+```python
+# init matrix & answer list
+n = int(input())
+matrix = []
+for i in range(n):
+  temInput = input()
+  row = [int(temInput[j]) for j in range(n)]
+  matrix.append(row)
+
+ansList = []
+```
+
+dx, dy를 통항 동남서북 순으로 BFS를 순환할 수 있도로 해주었고, 
+collection deque를 사용하여 queue를 적용하였다.
+
+queue에 들어가기 이전에 matrix의 좌표값을 1->0 을 바꾸어주었으며,
+이렇게 바꾸어줌으로써 다음 다른 좌표를 기준으로 BFS를 할 때에 다시 queue에 집어넣지 않도록 해주었다.
+
+queue에서 pop할 때마다 number of count를 세어 줌으로써 단지 내 집수를 추가하였다.
+queue 안의 좌표값이 다 출력이 되어서 비어지면 number of count를 바로 answer list에 넣어주지않고 
+반환해줌으로써 현재 단지수를 다 새지 않고 Matrix를 순회하는 것을 방지해주었다.
+
+
+```python
+# bfs
+dx = [1, 0, -1, 0]
+dy = [0, 1, 0, -1]
+def bfs(row, col):
+  numberOfCount = 0
+  queue = deque()
+  queue.append([row,col])
+  matrix[col][row] = 0
+  while(queue):
+    curRow, curCol = queue.popleft()
+    numberOfCount += 1
+    for i in range(4):
+      tx = curRow + dx[i]
+      ty = curCol + dy[i]
+      if tx < 0 or tx > n-1 or ty < 0 or ty > n-1 or matrix[ty][tx] == 0 :
+        continue
+      else:
+        matrix[ty][tx] = 0
+        queue.append([tx,ty])
+  return numberOfCount
+```
+
+matrix를 순회하고 결과값을 오름차순으로 출력해주었다.
+
+```python
+# iterate matrix 
+for i in range(n):
+  for j in range(n):
+    if matrix[i][j] == 1:
+      ansList.append(bfs(j,i))
+
+ansList.sort(reverse=False)
+print(len(ansList))
+for i in range(len(ansList)):
+  print(ansList[i])
+```
+### 주의할 점
+- BFS에 number of count를 반환해줌으로써  현재 단지수를 다 새지 않고 Matrix를 순회하는 것을 방지
+- BFS queue에서 pop하고나서 1->0으로 바꾸어주는게 아니라 queue에 들어가기 전에 matrix 값으 1->0 으로 변환해줌으로써, queue에서
+pop되기 이전에 다른 좌표로부터 중복참조가 되는 것으로부터 방지
+
+### 전체 코드
+
+```python
+import sys
+from collections import deque
+input = sys.stdin.readline
+
+# bfs
+dx = [1, 0, -1, 0]
+dy = [0, 1, 0, -1]
+def bfs(row, col):
+  numberOfCount = 0
+  queue = deque()
+  queue.append([row,col])
+  matrix[col][row] = 0
+  while(queue):
+    curRow, curCol = queue.popleft()
+    numberOfCount += 1
+    for i in range(4):
+      tx = curRow + dx[i]
+      ty = curCol + dy[i]
+      if tx < 0 or tx > n-1 or ty < 0 or ty > n-1 or matrix[ty][tx] == 0 :
+        continue
+      else:
+        matrix[ty][tx] = 0
+        queue.append([tx,ty])
+  return numberOfCount
+
+# init matrix & answer list
+n = int(input())
+matrix = []
+for i in range(n):
+  temInput = input()
+  row = [int(temInput[j]) for j in range(n)]
+  matrix.append(row)
+
+ansList = []
+
+# iterate matrix 
+for i in range(n):
+  for j in range(n):
+    if matrix[i][j] == 1:
+      ansList.append(bfs(j,i))
+
+ansList.sort(reverse=False)
+print(len(ansList))
+for i in range(len(ansList)):
+  print(ansList[i])
+```
