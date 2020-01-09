@@ -1,11 +1,10 @@
 ---
-title: "Swift Async Programming @escaping closure, and  Completion handler"
+title: "Delegate pattern example in Swift"
 date: 2020-01-09 15:28:23 -0400
 layout: post
 categories: swift
 ---
 
-# Delegate pattern example in Swift
 
 This time, let us study about __`delegate pattern`__ in swift.
 
@@ -27,16 +26,16 @@ First, we study the concepts, and then study the examples.
 I will represent two classes as two people.
 They are Amanda and Yulia.
 
-<img src="/images/delegate/delegate1.png" width="400" height="350">
+<img src="/images/delegate/delegate1.png" width="450" height="350">
 
 Amanda is packing boxes for delivery.
 Because yulia manages addresses to deliver, amanda should ask address to Yulia.
 
-<img src="/images/delegate/delegate2.png" width="400" height="350">
+<img src="/images/delegate/delegate2.png" width="450" height="350">
 
 After get the address from Yulia, Amanda inform completion and results to Yulia.
 
-<img src="/images/delegate/delegate3.png" width="400" height="350">
+<img src="/images/delegate/delegate3.png" width="450" height="350">
 
 Amanda knows all process about packing box, but Yulia do not need to know whole proecess.
 
