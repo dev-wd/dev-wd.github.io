@@ -6,6 +6,7 @@ categories: swift
 ---
 
 
+
 This time, let us study about __`delegate pattern`__ in swift.
 
 In iOS, __`delegate pattern`__ is used many times including tableview, colelctionview.. etc.
@@ -192,10 +193,23 @@ class Animal {
 ```
 
 
-## Coupling Issues
+## Retain Cycle  Issues
+
+I already mentioned [HERE](https://dev-wd.github.io/swift/arcmrc/) about retain cycle concepts and examples. 
+
+Delegate pattern also reference each classes.
+
+Protocol makes reference between classes.
+
+__`Animal Class`__ is declared on __`AnimalNameShowClass`__, and delegate protocol in __`Animal class`__ references __`AnimalNameShowClass`__.
 
 ## Conclusion
 
+I wrote about Delegate pattern, and Completion Handler already, then I will write Observer pattern as soon as possible.
+
+Additionally, I hope to write the comparision between those three patterns.
 
 
+Thank you for read my blog.
+Hope it helps you:)
 
