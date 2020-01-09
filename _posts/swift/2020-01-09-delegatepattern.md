@@ -27,16 +27,16 @@ First, we study the concepts, and then study the examples.
 I will represent two classes as two people.
 They are Amanda and Yulia.
 
-// image 1 
+<img src="/images/delegate/delegate1.png" width="400" height="350">
 
 Amanda is packing boxes for delivery.
 Because yulia manages addresses to deliver, amanda should ask address to Yulia.
 
-// image 2
+<img src="/images/delegate/delegate2.png" width="400" height="350">
 
 After get the address from Yulia, Amanda inform completion and results to Yulia.
 
-//image 3
+<img src="/images/delegate/delegate3.png" width="400" height="350">
 
 Amanda knows all process about packing box, but Yulia do not need to know whole proecess.
 
