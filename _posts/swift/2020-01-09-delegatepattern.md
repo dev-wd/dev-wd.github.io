@@ -98,7 +98,7 @@ open class UITableView : UIScrollView, NSCoding, UIDataSourceTranslating {
 
 ```
 
-Humn:open_mouth:..  delegate is declared on UITableView class which __type is UITableViewDelegate__.
+Humn:open_mouth: ..  delegate is declared on UITableView class which __type is UITableViewDelegate__.
 
 Okay.. then What is UITableViewDelegate?
 
