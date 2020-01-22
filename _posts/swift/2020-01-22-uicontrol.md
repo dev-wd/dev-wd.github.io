@@ -8,15 +8,11 @@ categories: swift
 When I study how to make button programmatically, I found to write __`UIControl.state`__ for setTitle and setTitleColor, and to write __`UIControl.event`__ for addTarget.
 
 ```swift 
- myButton.setTitle("This is button", 
- for: .normal)
- myButton.setTitleColor(.white, 
- for: .normal)
+ myButton.setTitle("This is button", for: .normal)
+ myButton.setTitleColor(.white, for: .normal)
  myButton.backgroundColor = .darkGray
         
- myButton.addTarget(self, 
- action: #selector(btnTapped), 
- for: .touchUpInside)
+ myButton.addTarget(self, action: #selector(btnTapped), for: .touchUpInside)
  
  self.view.addSubview(myButton)
 ```
