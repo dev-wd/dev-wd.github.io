@@ -1,5 +1,5 @@
 ---
-title: "Swift Programmitical UI (Auto Layout)"
+title: "Swift programmatical UI (Auto Layout)"
 date: 2020-01-22 13:30:03 -0400
 layout: post
 categories: swift
