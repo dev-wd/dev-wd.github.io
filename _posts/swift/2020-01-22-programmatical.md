@@ -1,11 +1,11 @@
 ---
-title: "Swift programmatical UI (Auto Layout)"
+title: "Swift programmatic UI (Auto Layout)"
 date: 2020-01-22 13:30:03 -0400
 layout: post
 categories: swift
 ---
 
-When I first study iOS, I wonder which tool should I use between storyboard, programmatical UI, and SwiftUI.
+When I first study iOS, I wonder which tool should I use between storyboard, programmatic UI, and SwiftUI.
 
 Because I am looking for work, I did not choose swiftUI. __Because swiftUI do not available below iOS 12__, most of company feel difficulty to adapt it now.
 
