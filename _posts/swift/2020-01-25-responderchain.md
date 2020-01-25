@@ -31,7 +31,7 @@ When a event is occured, app transfers the event to suitable resonder object whi
 
 The way how to find suitable responder object can be known by __hit testing__(I will upload it as  following posting)
 
-<img src="/images/responder/responder1.png" width="600" height="400">
+<img src="/images/responder/responder2.png" width="600" height="400">
 
 Hit testing identifies the appropriate responder object, usually the lowest child in the hierarchy is first responder.
 
