@@ -1,7 +1,6 @@
-
 ---
 title: "Responder Chain and Touch Event : UIResponder, UIEvent,UIControl."
-date: 2020-01-25 15:38:41 -0400
+date: 2020-01-25 15:48:56 -0400
 layout: post
 categories: swift
 ---
