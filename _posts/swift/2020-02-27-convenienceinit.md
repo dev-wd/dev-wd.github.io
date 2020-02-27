@@ -47,7 +47,7 @@ class Fruit {
 
 What if remove `self.price = price`?
 
-<img src="/images/init/init.png" width="800" height="200">
+<img src="/images/init/init.png" width="800" height="170">
 
 Yes, compilier warns developer to initiate whole properties.
 
