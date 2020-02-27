@@ -1,5 +1,5 @@
 ---
-title: "What is difference between init and convenience init in SwiftS"
+title: "What is difference between init and convenience init in Swift"
 date: 2020-02-27 18:08:41 -0400
 layout: post
 categories: swift
