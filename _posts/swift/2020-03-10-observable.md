@@ -1,6 +1,6 @@
 ---
 title: RxSwift 01, What is Observable and Observer?
-date: 2019-12-03 19:02:49 -0400
+date: 2020-03-10 18:20:19 -0400
 layout: post
 categories: swift
 ---
