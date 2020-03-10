@@ -35,9 +35,6 @@ Now, let us know the concept of RxSwift which support these advantages!
 
 ## Concept
 
-
-<img src="/images/observable/observable1.png" width="800" height="150">
-
 For easy understanding I can show a example with youtube.
 
 when a BJ create a personal channel, then it is Observable.
@@ -66,7 +63,7 @@ It is difficult to understand  both Observable and Observer only with concept.
 Let us look example first.
 
 
-<img src="/images/observable/observable3.png" width="500" height="430">
+<img src="/images/observable/observable3.png" width="550" height="430">
 
 ### Observer 
 ```swift
@@ -98,7 +95,7 @@ You also can see __observer parameter__ in Observable.
 
 Because we can know it from the internal code of RxSwift (you do not need to know it right now), __observer is closure after `.subscribe` method  from previous code.__ 
 
-// image of observer == {event}
+
 
 ```swift
 func checkIsEvenNumberObservable(items: [Int]) -> Observable<Int> {
