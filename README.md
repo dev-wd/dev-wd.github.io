@@ -10,7 +10,7 @@ So, __WaterDragon Developer__ is just name😂
 
 
 
-### <img src="f/images/readme/swift.png" width="24" height="24"> Swift
+### <img src="/images/readme/swift.png" width="24" height="24"> Swift
 
 - RxSwift
 - iOS Architecture
