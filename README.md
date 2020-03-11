@@ -1,4 +1,4 @@
-# <img src="https://github.com/dev-wd/dev-wd.github.io/blob/master/images/logo.png" width="36" height="36"> WD DEV Tech Blog 
+# <img src="/images/logo.png" width="36" height="36"> WD DEV Tech Blog 
 
 ## What is meaning of WD DEV ..?
 My korean name is __Sooyong kim__. Because Soo means water and Yong means dragon by chinese letter, friends called me __WaterDragon__. 
@@ -10,7 +10,7 @@ So, __WaterDragon Developer__ is just name😂
 
 
 
-### <img src="flutter logo" width="24" height="24"> Swift
+### <img src="f/images/readme/swift.png" width="24" height="24"> Swift
 
 - RxSwift
 - iOS Architecture
@@ -19,7 +19,7 @@ So, __WaterDragon Developer__ is just name😂
 - Reactive Programming
 - Asynchronous Programming
 
-### <img src="flutter logo" width="24" height="24">  Flutter
+### <img src="/images/readme/flutter.png" width="24" height="24">  Flutter
 
 Preparing for uplaod 🥚
 
