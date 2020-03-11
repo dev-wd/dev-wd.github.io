@@ -29,10 +29,8 @@ So, __WaterDragon Developer__ is just name😂
 
 - Review Backjoon Online judge problems
 - Python
-
- [Code Repository](https://github.com/dev-wd/boj-python-solved)
- 
- [mainea](https://www.acmicpc.net/user/mainea)
+- [Code Repository](https://github.com/dev-wd/boj-python-solved)
+- [mainea](https://www.acmicpc.net/user/mainea)
 
 
 ### 📌 Conference Review
