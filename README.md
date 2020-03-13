@@ -23,7 +23,7 @@ So, __WaterDragon Developer__ is just name😂
 
 ### <img src="/images/readme/flutter.png" width="24" height="24">  Flutter
 
-- Preparing for uplaoding 🥚
+- Preparing for uploading 🥚
 
 ### 👨‍💻 Algorithm
 
