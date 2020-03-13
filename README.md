@@ -43,7 +43,7 @@ So, __WaterDragon Developer__ is just name😂
 ## Contributors 
 
 I always wait for your feedback.  
-Feel free to ask me☺️
+Don't hesitate ☺️
 
 ## Contracts
 
