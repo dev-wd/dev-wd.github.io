@@ -9,18 +9,17 @@ categories: swift
 For Arranging the concept of RxSwift, I decided to write series of __`Understanding rxswift`__ posting.
 
 ## Why do developers use RxSwift?
-When developer develops app, it is neccessary to develope app as __`Reactive`__. 
-
+When developer develops app, it is neccessary to develope app __`Reactively`__. 
 
 Swift supports __`@escaping`__ handler to catch the end point of asynchoronous task.
 
 For making task asynchoronously, we should use __`Dispatchqueue`__.   
 
-__`willSet`__ and __`didSet`__ also makes  reactively observing specific variable possible.
+__`willSet`__ and __`didSet`__ also makes observing specific variable reactively.
  
-These things are all you need to know and construct for __reactive programming__.
+These things are all you need to know and it is neccesary for __reactive programming__.
 
-However, you can do reactive programming just by using RxSwift.
+However, __you can make reactive programming just by using RxSwift.__
 
 
 In my opinion, __advantage of using RxSwift__ is..
@@ -30,21 +29,21 @@ __RxSwift makes reactive code readable and short.__ ( You don't need to use thos
 __RxSwift operators make stream extensive.__ 
 
 
-Now, let us know the concept of RxSwift which support these advantages!
+Now, let us know the concept of RxSwift which supports these advantages!
 
 
 ## Concept
 
-For easy understanding I can show a example with youtube.
+For understanding easily, I can show a youtube example.
 
-when a BJ create a personal channel, then it is Observable.
+When a BJ create a personal channel, then it is Observable.
 
 Then, a video viewer can be a observer if he subscribes specfific __video channel(Observable)__
 
 
 <img src="/images/observable/observable1.png" width="800" height="150">
 
-After video viewer(Observer) subscribes a channel of BJ(Observable), whenever new video of subscribed channel is uploaded, viewer can see the video from his recommanded video part on from now on.
+After video viewer(Observer) subscribes a channel of BJ(Observable), whenever new video of subscribed channel is uploaded, viewer can see the video from his recommanded video part from now on.
 
 Here, video is an event which is sending from channel(Observable) to subsrcibed viewer(Observer).
 
@@ -52,16 +51,12 @@ Therefore, an video (event of Observable) is shown on viewers(Observer), viewers
 
 <img src="/images/observable/observable2.png" width="600" height="350">
 
-In ReactiveX, an Observer subsribes an Observable. Then that observer eacts to whatever item or sequence of items the Observable emits.
-
- 
-Observable이 배출하는 하나 또는 연속되는 항목에 Observer는 반응한다.
+In ReactiveX, an Observer subscribes an Observable, and then observer reacts whatever item or sequence of items the Observable emits.
 
 ## Example of Observable and Observer.
-It is difficult to understand  both Observable and Observer only with concept.
+It is difficult to understand both Observable and Observer only with concept.
 
-Let us look example first.
-
+Let us look example from now on.
 
 <img src="/images/observable/observable3.png" width="550" height="430">
 
