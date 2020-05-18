@@ -174,7 +174,7 @@ let ob = Observable.range(start: 1, count: 5)
 ```
 
 #### Execution
-```swift
+```
 1
 2
 3
@@ -205,8 +205,8 @@ you can also define the scheduler for streaming.
 
 It is not hot observable and __`onComplete()`__ after emitting a event.
 
-```swift
-let ob9 = Observable<Int>.timer(4, scheduler: MainScheduler.instance)
+```
+let ob = Observable<Int>.timer(4, scheduler: MainScheduler.instance)
 ```
 
 #### Execution
@@ -224,7 +224,7 @@ let ob = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
 
 #### Execution
 
-```swift
+```
 0
 1
 2
